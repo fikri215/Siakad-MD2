@@ -42,7 +42,7 @@
                             @method('delete')
                             <a href="{{ route('siswa.show', Crypt::encrypt($data->id)) }}" class="btn btn-info btn-sm mt-2"><i class="nav-icon fas fa-id-card"></i> &nbsp; Detail</a>
                             <a href="{{ route('siswa.edit', Crypt::encrypt($data->id)) }}" class="btn btn-success btn-sm mt-2"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
-                            <button class="btn btn-danger btn-sm mt-2"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
+                            <button class="btn btn-danger btn-sm mt-2" onclick="return myFunction()"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                         </form>
                     </td>
                 </tr>
@@ -59,6 +59,11 @@
         $("#MasterData").addClass("active");
         $("#liMasterData").addClass("menu-open");
         $("#DataGuru").addClass("active");
+
+        function myFunction() {
+            if(!confirm("Anda Yakin Ingin Menghapus Data Ini?"))
+            event.preventDefault();
+        };
     </script>
 
     <script>

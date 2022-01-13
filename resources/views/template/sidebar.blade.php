@@ -109,7 +109,7 @@
                 </li>
             @endif
         </ul>
-        <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+        {{-- <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary btn-lg btn-block">
             <i class="fas fa-power-off"></i> Logout
             </a>
@@ -123,6 +123,6 @@
                         {{ __('Logout') }}
                     </a>
                 </div>
-        </div>
+        </div> --}}
     </aside>
 </div>

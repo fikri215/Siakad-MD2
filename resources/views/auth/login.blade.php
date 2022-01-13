@@ -65,9 +65,14 @@
             </div>
           </div>
         </div>
-        <div class="simple-footer">
+        <footer class="text-secondary">
+          <marquee>
+              <strong>Copyright &copy; <script>document.write(new Date().getFullYear());</script> <span class="bullet"></span> <a href="#" class="text-decoration-none">SMK Muhammadiyah 2 Jakarta</a>. </strong>
+          </marquee>
+        </footer>
+        {{-- <div class="simple-footer">
           Copyright &copy;
-        </div>
+        </div> --}}
       </div>
     </section>
   </div>

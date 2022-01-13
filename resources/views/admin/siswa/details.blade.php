@@ -13,22 +13,32 @@
         <div class="card-body">
             <div class="row no-gutters ml-2 mb-2 mr-2">
                 <div class="col-md-4">
-                    <img src="{{ asset($siswa->foto) }}" class="card-img img-details" alt="...">
+                    <img src="{{ asset($siswa->foto) }}" class="card-img img-details" style="height: 500px" alt="...">
                 </div>
                 <div class="col-md-1 mb-4"></div>
-                <div class="col-md-7">
-                    <h5 class="card-title card-text mb-2">Nama : {{ $siswa->nama_siswa }}</h5>
-                    <h5 class="card-title card-text mb-2">No. Induk : {{ $siswa->no_induk }}</h5>
-                    <h5 class="card-title card-text mb-2">NIS : {{ $siswa->nis }}</h5>
-                    <h5 class="card-title card-text mb-2">Kelas : {{ $siswa->kelas->nama_kelas }}</h5>
+                <div class="col-md-3">
+                    <h5 class="card-title card-text mb-2 text-dark">Nama</h5><hr>
+                    <h5 class="card-title card-text mb-2 text-dark">No. Induk</h5><hr>
+                    <h5 class="card-title card-text mb-2 text-dark">NIS</h5><hr>
+                    <h5 class="card-title card-text mb-2 text-dark">Kelas</h5><hr>
+                    <h5 class="card-title card-text mb-2 text-dark">Jenis Kelamin</h5><hr>
+                    <h5 class="card-title card-text mb-2 text-dark">Tempat Lahir</h5><hr>
+                    <h5 class="card-title card-text mb-2 text-dark">Tanggal Lahir</h5><hr>
+                    <h5 class="card-title card-text mb-2 text-dark">No. Telepon</h5><hr>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="card-title card-text mb-2">: {{ $siswa->nama_siswa }}</h5><hr>
+                    <h5 class="card-title card-text mb-2">: {{ $siswa->no_induk }}</h5><hr>
+                    <h5 class="card-title card-text mb-2">: {{ $siswa->nis }}</h5><hr>
+                    <h5 class="card-title card-text mb-2">: {{ $siswa->kelas->nama_kelas }}</h5><hr>
                     @if ($siswa->jk == 'L')
-                        <h5 class="card-title card-text mb-2">Jenis Kelamin : Laki-laki</h5>
+                        <h5 class="card-title card-text mb-2">: Laki-laki</h5><hr>
                     @else
-                        <h5 class="card-title card-text mb-2">Jenis Kelamin : Perempuan</h5>
+                        <h5 class="card-title card-text mb-2">: Perempuan</h5><hr>
                     @endif
-                    <h5 class="card-title card-text mb-2">Tempat Lahir : {{ $siswa->tmp_lahir }}</h5>
-                    <h5 class="card-title card-text mb-2">Tanggal Lahir : {{ date('l, d F Y', strtotime($siswa->tgl_lahir)) }}</h5>
-                    <h5 class="card-title card-text mb-2">No. Telepon : {{ $siswa->telp }}</h5>
+                    <h5 class="card-title card-text mb-2">: {{ $siswa->tmp_lahir }}</h5><hr>
+                    <h5 class="card-title card-text mb-2">: {{ date('l, d F Y', strtotime($siswa->tgl_lahir)) }}</h5><hr>
+                    <h5 class="card-title card-text mb-2">: {{ $siswa->telp }}</h5><hr>
                 </div>
             </div>
         </div>

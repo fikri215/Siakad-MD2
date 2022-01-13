@@ -12,23 +12,34 @@
     <div class="card-body">
         <div class="row no-gutters ml-2 mb-2 mr-2">
             <div class="col-md-4">
-                <img src="{{ asset($guru->foto) }}" class="card-img img-details" alt="...">
+                <img src="{{ asset($guru->foto) }}" class="card-img img-details" style="height: 500px;" alt="...">
             </div>
             <div class="col-md-1 mb-4"></div>
-            <div class="col-md-7">
-                <h5 class="card-title card-text mb-2">Nama : {{ $guru->nama_guru }}</h5>
-                <h5 class="card-title card-text mb-2">NIP : {{ $guru->nip }}</h5>
-                <h5 class="card-title card-text mb-2">No Id Card : {{ $guru->id_card }}</h5>
-                <h5 class="card-title card-text mb-2">Guru Mapel : {{ $guru->mapel->nama_mapel }}</h5>
-                <h5 class="card-title card-text mb-2">Kode Jadwal : {{ $guru->kode }}</h5>
+            <div class="col-md-3">
+                <h5 class="card-title card-text mb-2 text-dark">Nama </h5><hr>
+                <h5 class="card-title card-text mb-2 text-dark">NIP  </h5><hr>
+                <h5 class="card-title card-text mb-2 text-dark">No Id Card </h5><hr>
+                <h5 class="card-title card-text mb-2 text-dark">Guru Mapel </h5><hr>
+                <h5 class="card-title card-text mb-2 text-dark">Kode Jadwal </h5><hr>
+                <h5 class="card-title card-text mb-2 text-dark">Jenis Kelamin </h5><hr>
+                <h5 class="card-title card-text mb-2 text-dark">Tempat Lahir </h5><hr>
+                <h5 class="card-title card-text mb-2 text-dark">Tanggal Lahir </h5><hr>
+                <h5 class="card-title card-text mb-2 text-dark">No. Telepon </h5><hr>
+            </div>
+            <div class="col-md-3">
+                <h5 class="card-title card-text mb-2">: {{ $guru->nama_guru }}</h5><hr>
+                <h5 class="card-title card-text mb-2">: {{ $guru->nip }}</h5><hr>
+                <h5 class="card-title card-text mb-2">: {{ $guru->id_card }}</h5><hr>
+                <h5 class="card-title card-text mb-2">: {{ $guru->mapel->nama_mapel }}</h5><hr>
+                <h5 class="card-title card-text mb-2">: {{ $guru->kode }}</h5><hr>
                 @if ($guru->jk == 'L')
-                    <h5 class="card-title card-text mb-2">Jenis Kelamin : Laki-laki</h5>
+                    <h5 class="card-title card-text mb-2">: Laki-laki</h5><hr>
                 @else
-                    <h5 class="card-title card-text mb-2">Jenis Kelamin : Perempuan</h5>
+                    <h5 class="card-title card-text mb-2">: Perempuan</h5><hr>
                 @endif
-                <h5 class="card-title card-text mb-2">Tempat Lahir : {{ $guru->tmp_lahir }}</h5>
-                <h5 class="card-title card-text mb-2">Tanggal Lahir : {{ date('l, d F Y', strtotime($guru->tgl_lahir)) }}</h5>
-                <h5 class="card-title card-text mb-2">No. Telepon : {{ $guru->telp }}</h5>
+                <h5 class="card-title card-text mb-2">: {{ $guru->tmp_lahir }}</h5><hr>
+                <h5 class="card-title card-text mb-2">: {{ date('l, d F Y', strtotime($guru->tgl_lahir)) }}</h5><hr>
+                <h5 class="card-title card-text mb-2">: {{ $guru->telp }}</h5><hr>
             </div>
         </div>
     </div>
