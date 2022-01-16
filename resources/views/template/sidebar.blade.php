@@ -47,22 +47,12 @@
                 <a href="#" class="nav-link has-dropdown" id="home"><i class="fas fa-trash"></i><span>Managemen Trash</span></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="nav-link" href="{{ route('jadwal.trash') }}" id="TrashJadwal"><i class="fas fa-calendar"></i> <span>Trash Jadwal</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ route('guru.trash') }}" id="TrashGuru"><i class="fas fa-user"></i> <span>Trash Guru</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ route('siswa.trash') }}" id="TrashSiswa"><i class="fas fa-users"></i> <span>Trash Siswa</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ route('kelas.trash') }}" id="TrashKelas"><i class="fas fa-home"></i> <span>Trash Kelas</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ route('mapel.trash') }}" id="TrashMapel"><i class="fas fa-book-open"></i> <span>Trash MaPel</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ route('user.trash') }}" id="TrashUSer"><i class="fas fa-user-plus"></i> <span>Trash User</span></a>
+                        <a class="nav-link" href="{{ route('jadwal.trash') }}" id="TrashJadwal"><span>Trash Jadwal</span></a>
+                        <a class="nav-link" href="{{ route('guru.trash') }}" id="TrashGuru"><span>Trash Guru</span></a>
+                        <a class="nav-link" href="{{ route('siswa.trash') }}" id="TrashSiswa"><span>Trash Siswa</span></a>
+                        <a class="nav-link" href="{{ route('kelas.trash') }}" id="TrashKelas"><span>Trash Kelas</span></a>
+                        <a class="nav-link" href="{{ route('mapel.trash') }}" id="TrashMapel"><span>Trash MaPel</span></a>
+                        <a class="nav-link" href="{{ route('user.trash') }}" id="TrashUSer"><span>Trash User</span></a>
                     </li>
                 </ul>
                 </li>
@@ -79,33 +69,42 @@
                 </li>
             @elseif (Auth::user()->role == 'Guru' && Auth::user()->guru(Auth::user()->id_card))
                 <li>
-                    <a class="nav-link" href="{{ url('/') }}" id="Home"><i class="fas fa-calendar"></i> <span>Dashboard</span></a>
+                    <a class="nav-link" href="{{ url('/') }}" id="Home"><i class="fas fa-home"></i> <span>Dashboard</span></a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('jadwal.guru') }}" id="JadwalGuru"><i class="fas fa-user"></i> <span>Jadwal</span></a>
+                    <a class="nav-link" href="{{ route('jadwal.guru') }}" id="JadwalGuru"><i class="fas fa-calendar"></i> <span>Jadwal</span></a>
                 </li>
                 <li class="menu-header">Nilai</li>
                 <li>
-                    <a class="nav-link" href="{{ route('ulangan.index') }}" id="UlanganGuru"><i class="fas fa-users"></i> <span>Nilai Ulangan</span></a>
+                    <a class="nav-link" href="{{ route('ulangan.index') }}" id="UlanganGuru"><i class="fas fa-pen"></i> <span>Nilai Ulangan</span></a>
                 </li>
+                @if (
+                    Auth::user()->guru(Auth::user()->id_card)->mapel->nama_mapel == "Pendidikan Agama" ||
+                    Auth::user()->guru(Auth::user()->id_card)->mapel->nama_mapel == "Pendidikan Pancasila dan Kewarganegaraan"
+                )
+                    <li>
+                        <a class="nav-link" href="{{ route('sikap.index') }}" id="RapotGuru"><i class="fas fa-home"></i> <span>Nilai Sikap</span></a>
+                    </li>
+                @else
+                @endif
                 <li>
-                    <a class="nav-link" href="{{ route('rapot.index') }}" id="RapotGuru"><i class="fas fa-home"></i> <span>Nilai Rapot</span></a>
+                    <a class="nav-link" href="{{ route('rapot.index') }}" id="RapotGuru"><i class="fas fa-clipboard"></i> <span>Nilai Rapot</span></a>
                 </li>
                 <li>
                     <a class="nav-link" href="{{ route('nilai.index') }}" id="DescGuru"><i class="fas fa-home"></i> <span>Deskripsi Predikat</span></a>
                 </li>
             @elseif (Auth::user()->role == 'Siswa' && Auth::user()->siswa(Auth::user()->no_induk))
                 <li>
-                    <a class="nav-link" href="{{ url('/') }}" id="Home"><i class="fas fa-calendar"></i> <span>Dashboard</span></a>
+                    <a class="nav-link" href="{{ url('/') }}" id="Home"><i class="fas fa-home"></i> <span>Dashboard</span></a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('jadwal.siswa') }}" id="jadwalSiswa"><i class="fas fa-user"></i> <span>Jadwal</span></a>
+                    <a class="nav-link" href="{{ route('jadwal.siswa') }}" id="jadwalSiswa"><i class="fas fa-calendar"></i> <span>Jadwal</span></a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('ulangan.siswa') }}" id="UlanganSiswa"><i class="fas fa-users"></i> <span>Nilai Ulangan</span></a>
+                    <a class="nav-link" href="{{ route('ulangan.siswa') }}" id="UlanganSiswa"><i class="fas fa-pen"></i> <span>Nilai Ulangan</span></a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('rapot.siswa') }}" id="Rapot Siswa"><i class="fas fa-home"></i> <span>Nilai Rapot</span></a>
+                    <a class="nav-link" href="{{ route('rapot.siswa') }}" id="Rapot Siswa"><i class="fas fa-clipboard"></i> <span>Nilai Rapot</span></a>
                 </li>
             @endif
         </ul>

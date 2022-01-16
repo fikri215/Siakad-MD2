@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                   <label for="jurusan_id">Jurusan</label>
-                  <select id="jurusan_id" name="jurusan_id" class="form-control @error('jurusan_id') is-invalid @enderror select2bs4">
+                  <select id="jurusan_id" name="jurusan_id" class="form-control form-select @error('jurusan_id') is-invalid @enderror select2bs4">
                     <option value="">-- Pilih Jurusan Mapel --</option>
                     <option value="4"
                         @if ($mapel->jurusan_id == '4')
@@ -39,7 +39,7 @@
                     @endforeach
                   </select>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="kelompok">Kelompok</label>
                     <select id="kelompok" name="kelompok" class="select2bs4 form-control @error('kelompok') is-invalid @enderror">
                         <option value="">-- Pilih Kelompok Mapel --</option>
@@ -59,7 +59,7 @@
                             @endif
                         >Pelajaran Keahlian</option>
                     </select>
-                </div>
+                </div> --}}
             </div>
           </div>
         </div>

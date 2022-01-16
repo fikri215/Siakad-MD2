@@ -38,7 +38,7 @@
                             @csrf
                             @method('delete')
                             <a href="{{ route('mapel.edit', Crypt::encrypt($data->id)) }}" class="btn btn-success btn-sm"><i class="nav-icon fas fa-edit"></i> &nbsp; Edit</a>
-                            <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
+                            <button class="btn btn-danger btn-sm" onclick="return myFunction()"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                         </form>
                     </td>
                 </tr>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="form-group">
                   <label for="jurusan_id">Jurusan</label>
-                  <select id="jurusan_id" name="jurusan_id" class="form-control @error('jurusan_id') is-invalid @enderror select2bs4">
+                  <select id="jurusan_id" name="jurusan_id" class="form-control form-select @error('jurusan_id') is-invalid @enderror select2bs4">
                     <option value="">-- Pilih Jurusan Mapel --</option>
                     <option value="4">Semua</option>
                     @foreach ($paket as $data)
@@ -79,7 +79,7 @@
                     @endforeach
                   </select>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="kelompok">Kelompok</label>
                     <select id="kelompok" name="kelompok" class="select2bs4 form-control @error('kelompok') is-invalid @enderror">
                       <option value="">-- Pilih Kelompok Mapel --</option>
@@ -87,7 +87,7 @@
                       <option value="B">Pelajaran Khusus</option>
                       <option value="C">Pelajaran Keahlian</option>
                     </select>
-                </div>
+                </div> --}}
               </div>
             </div>
         </div>
@@ -102,6 +102,11 @@
 @endsection
 @section('script')
   <script>
+    function myFunction() {
+      if(!confirm("Anda Yakin Ingin Menghapus Data Ini?"))
+      event.preventDefault();
+    };
+
     $("#MasterData").addClass("active");
     $("#liMasterData").addClass("menu-open");
     $("#DataMapel").addClass("active");

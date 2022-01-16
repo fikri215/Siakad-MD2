@@ -51,7 +51,7 @@
                 <form action="{{ route('user.destroy', $data->id) }}" method="post">
                   @csrf
                   @method('delete')
-                  <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
+                  <button class="btn btn-danger btn-sm" onclick="return myFunction()"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                 </form>
               </td>
             </tr>
@@ -68,6 +68,11 @@
 @endsection
 @section('script')
     <script>
+      function myFunction() {
+        if(!confirm("Anda Yakin Ingin Menghapus Data Ini?"))
+        event.preventDefault();
+      };
+
         $("#MasterData").addClass("active");
         $("#liMasterData").addClass("menu-open");
         $("#DataUser").addClass("active");

@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label for="mapel_id">Mapel</label>
-                <select id="mapel_id" name="mapel_id" class="select2bs4 form-control @error('mapel_id') is-invalid @enderror">
+                <select id="mapel_id" name="mapel_id" class="select2bs4 form-control form-select @error('mapel_id') is-invalid @enderror">
                     <option value="">-- Pilih Mapel --</option>
                     @foreach ($mapel as $data)
                         <option value="{{ $data->id }}"
@@ -54,7 +54,7 @@
             </div>
             <div class="form-group">
                 <label for="jk">Jenis Kelamin</label>
-                <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror">
+                <select id="jk" name="jk" class="select2bs4 form-control form-select @error('jk') is-invalid @enderror">
                     <option value="">-- Pilih Jenis Kelamin --</option>
                     <option value="L"
                         @if ($guru->jk == 'L')

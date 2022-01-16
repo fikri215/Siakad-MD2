@@ -27,7 +27,7 @@
                         'Jumat' => 'Jumat'
                       )
                   @endphp
-                  <select id="hari" name="hari" class="form-control @error('hari') is-invalid @enderror select2bs4">
+                  <select id="hari" name="hari" class="form-control form-select @error('hari') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Hari --</option>
                       @foreach ($hari as $val => $h)
                           <option value="{{ $val }}">{{ $h }}</option>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group">
                   <label for="kelas_id">Kelas</label>
-                  <select id="kelas_id" name="kelas_id" class="form-control @error('kelas_id') is-invalid @enderror select2bs4">
+                  <select id="kelas_id" name="kelas_id" class="form-control form-select @error('kelas_id') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Kelas --</option>
                       @foreach ($kelas as $data)
                           <option value="{{ $data->id }}">{{ $data->nama_kelas }}</option>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="form-group">
                   <label for="guru_id">Kode Mapel</label>
-                  <select id="guru_id" name="guru_id" class="form-control @error('guru_id') is-invalid @enderror select2bs4">
+                  <select id="guru_id" name="guru_id" class="form-control form-select @error('guru_id') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Kode Mapel --</option>
                       @foreach ($guru as $data)
                           <option value="{{ $data->id }}">{{ $data->kode }}</option>
@@ -77,7 +77,7 @@
                         '12 PM' => '12 PM'
                       )
                   @endphp
-                  <select id="ruangan" name="ruangan" class="form-control @error('ruangan') is-invalid @enderror select2bs4">
+                  <select id="ruangan" name="ruangan" class="form-control form-select @error('ruangan') is-invalid @enderror select2bs4">
                       <option value="">-- Pilih Ruang Kelas --</option>
                       @foreach ($ruang as $val => $r)
                           <option value="{{ $val }}">{{ $r }}</option>

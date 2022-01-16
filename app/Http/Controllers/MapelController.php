@@ -45,7 +45,7 @@ class MapelController extends Controller
         $this->validate($request, [
             'nama_mapel' => 'required',
             'jurusan_id' => 'required',
-            'kelompok' => 'required'
+            // 'kelompok' => 'required'
         ]);
 
         Mapel::updateOrCreate(
@@ -55,7 +55,7 @@ class MapelController extends Controller
             [
                 'nama_mapel' => $request->nama_mapel,
                 'jurusan_id' => $request->jurusan_id,
-                'kelompok' => $request->kelompok,
+                // 'kelompok' => $request->kelompok,
             ]
         );
 

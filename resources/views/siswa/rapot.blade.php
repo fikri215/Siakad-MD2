@@ -129,10 +129,14 @@
                             </thead>
                             <tbody>
                                 @foreach ($mapel as $val => $data)
+                                @dump($val)
                                     <tr>
                                         <?php $data = $data[0]; ?>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->mapel->nama_mapel }}</td>
+                                        @if ( !@empty($data->kkm($data->guru_id)) )
+                                            
+                                            
                                         {{-- <td class="ctr">{{ $data->kkm($data->nilai($val)['guru_id']) }}</td> --}}
                                         <td class="ctr">{{ $data->kkm($data->guru_id) }}</td>
                                         <td class="ctr">{{ $data->nilai($data->p_nilai) }}</td>
@@ -141,6 +145,15 @@
                                         <td class="ctr">{{ $data->nilai($data->k_nilai) }}</td>
                                         <td class="ctr">{{ $data->nilai($data->k_predikat) }}</td>
                                         <td class="ctr">{{ $data->nilai($data->k_deskripsi) }}</td>
+                                        @else
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">{{ $data->nilai($data->p_nilai) }}</td>
+                                        <td class="ctr">{{ $data->nilai($data->p_predikat) }}</td>
+                                        <td class="ctr">{{ $data->nilai($data->p_deskripsi) }}</td>
+                                        <td class="ctr">{{ $data->nilai($data->k_nilai) }}</td>
+                                        <td class="ctr">{{ $data->nilai($data->k_predikat) }}</td>
+                                        <td class="ctr">{{ $data->nilai($data->k_deskripsi) }}</td>
+                                        @endif
                                         
                                         {{-- <td class="ctr">{{ $data->nilai($val)['p_nilai'] }}</td>
                                         <td class="ctr">{{ $data->nilai($val)['p_predikat'] }}</td>

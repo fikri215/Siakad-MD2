@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label for="jk">Jenis Kelamin</label>
-                    <select id="jk" name="jk" class="select2bs4 form-control @error('jk') is-invalid @enderror">
+                    <select id="jk" name="jk" class="select2bs4 form-control form-select @error('jk') is-invalid @enderror">
                         <option value="">-- Pilih Jenis Kelamin --</option>
                         <option value="L">Laki-Laki</option>
                         <option value="P">Perempuan</option>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group">
                     <label for="kelas_id">Kelas</label>
-                    <select id="kelas_id" name="kelas_id" class="select2bs4 form-control @error('kelas_id') is-invalid @enderror">
+                    <select id="kelas_id" name="kelas_id" class="select2bs4 form-control form-select @error('kelas_id') is-invalid @enderror">
                         <option value="">-- Pilih Kelas --</option>
                         @foreach ($kelas as $data)
                             <option value="{{ $data->id }}">{{ $data->nama_kelas }}</option>

@@ -73,10 +73,13 @@
                         <tr>
                             <th class="ctr">No.</th>
                             <th>Nama Siswa</th>
-                            <th class="ctr">ULHA 1</th>
-                            <th class="ctr">ULHA 2</th>
+                            <th class="ctr">UH 1</th>
+                            <th class="ctr">UH 2</th>
                             <th class="ctr">UTS</th>
-                            <th class="ctr">ULHA 3</th>
+                            <th class="ctr">UH 3</th>
+                            <th class="ctr">UH 4</th>
+                            <th class="ctr">UH 5</th>
+                            <th class="ctr">UH 6</th>
                             <th class="ctr">UAS</th>
                             <th class="ctr">Aksi</th>
                         </tr>
@@ -131,6 +134,30 @@
                                         @endif
                                     </td>
                                     <td class="ctr">
+                                        @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_4'])
+                                            <div class="text-center">{{ $data->ulangan($data->id)['ulha_4'] }}</div>
+                                            <input type="hidden" name="ulha_4" class="ulha_4_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_4'] }}">
+                                        @else
+                                            <input type="text" name="ulha_4" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_4_{{$data->id}}" autocomplete="off">
+                                        @endif
+                                    </td>
+                                    <td class="ctr">
+                                        @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_5'])
+                                            <div class="text-center">{{ $data->ulangan($data->id)['ulha_5'] }}</div>
+                                            <input type="hidden" name="ulha_5" class="ulha_4_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_5'] }}">
+                                        @else
+                                            <input type="text" name="ulha_5" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_5_{{$data->id}}" autocomplete="off">
+                                        @endif
+                                    </td>
+                                    <td class="ctr">
+                                        @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_6'])
+                                            <div class="text-center">{{ $data->ulangan($data->id)['ulha_6'] }}</div>
+                                            <input type="hidden" name="ulha_6" class="ulha_4_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_6'] }}">
+                                        @else
+                                            <input type="text" name="ulha_6" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_6_{{$data->id}}" autocomplete="off">
+                                        @endif
+                                    </td>
+                                    <td class="ctr">
                                         @if ($data->ulangan($data->id) && $data->ulangan($data->id)['uas'])
                                             <div class="text-center">{{ $data->ulangan($data->id)['uas'] }}</div>
                                             <input type="hidden" name="uas" class="uas_{{$data->id}}" value="{{ $data->ulangan($data->id)['uas'] }}">
@@ -140,7 +167,7 @@
                                     </td>
                                     <td class="ctr sub_{{$data->id}}">
                                         {{-- @if ($data->ulangan($data->id)) --}}
-                                        @if (!empty($data->ulangan($data->id)['ulha_1']) && !empty($data->ulangan($data->id)['ulha_2']) && !empty($data->ulangan($data->id)['ulha_3'])  && !empty($data->ulangan($data->id)['uts'])  && !empty($data->ulangan($data->id)['uas']))
+                                        @if (!empty($data->ulangan($data->id)['ulha_1']) && !empty($data->ulangan($data->id)['ulha_2']) && !empty($data->ulangan($data->id)['ulha_3'])  && !empty($data->ulangan($data->id)['ulha_4'])  && !empty($data->ulangan($data->id)['ulha_5'])  && !empty($data->ulangan($data->id)['ulha_6'])  && !empty($data->ulangan($data->id)['uts'])  && !empty($data->ulangan($data->id)['uas']))
                                             <i class="fas fa-check" style="font-weight:bold;"></i>
                                         @else
                                             <button type="button" id="submit-{{$data->id}}" class="btn btn-default btn_click" data-id="{{$data->id}}"><i class="nav-icon fas fa-save"></i></button>
@@ -165,6 +192,9 @@
             var ulha_2 = $(".ulha_2_"+id).val();
             var uts = $(".uts_"+id).val();
             var ulha_3 = $(".ulha_3_"+id).val();
+            var ulha_4 = $(".ulha_4_"+id).val();
+            var ulha_5 = $(".ulha_5_"+id).val();
+            var ulha_6 = $(".ulha_6_"+id).val();
             var uas = $(".uas_"+id).val();
             var ulangan_id = $(".ulangan_id_"+id).val();
             var guru_id = $("input[name=guru_id]").val();
@@ -184,6 +214,9 @@
                     ulha_2 : ulha_2,
                     uts : uts,
                     ulha_3 : ulha_3,
+                    ulha_4 : ulha_4,
+                    ulha_5 : ulha_5,
+                    ulha_6 : ulha_6,
                     uas : uas,
                 },
                 success: function(data){

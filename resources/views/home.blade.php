@@ -22,6 +22,29 @@
                       $hari = date('w');
                       $jam = date('H:i');
                     @endphp
+                    {{-- @if ( $jadwal->count() > 0 )
+                      @if ( $hari == 'Senin' || $hari == 'Selasa' || $hari == 'Rabu' || $hari == 'Kamis' || $hari == 'Jumat')
+                      @foreach ($jadwal as $data)
+                      <tr>
+                        <td>{{ $data->jam_mulai.' - '.$data->jam_selesai }}</td>
+                        <td>
+                          <h6 class="card-title mt-2 mb-n1">{{ $data->mapel->nama_mapel }}</h6>
+                          <p class="card-text text-muted">{{ $data->guru->nama_guru }}</small></p>
+                        </td>
+                        <td>{{ $data->kelas->nama_kelas }}</td>
+                        <td>{{ $data->ruangan }}</td>
+                      </tr>
+                      @endforeach
+                      @elseif ($hari == 'Minggu' || $hari == 'Jumat')
+                      <tr>
+                        <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Sekolah Libur!</td>
+                      </tr>
+                      @endif
+                    @else
+                      <tr>
+                        <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak ada data jadwal!</td>
+                      </tr>
+                    @endif --}}
                     @if ( $jadwal->count() > 0 )
                       @if (
                         $hari == 'Senin' && $jam >= '09:45' && $jam <= '10:15' ||
@@ -50,8 +73,8 @@
                           <td>{{ $data->ruangan }}</td>
                         </tr>
                       @endforeach
-                  @endif
-                  @elseif ($jam <= '07:00')
+                      @endif
+                  {{-- @elseif ($jam <= '07:00')
                     <tr>
                       <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Jam Pelajaran Hari ini Akan Segera Dimulai!</td>
                     </tr>
@@ -68,7 +91,7 @@
                 @elseif ($hari == 'Minggu' || $hari == 'Jumat')
                   <tr>
                     <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Sekolah Libur!</td>
-                  </tr>
+                  </tr> --}}
                 @else
                   <tr>
                     <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak Ada Data Jadwal!</td>
@@ -92,7 +115,7 @@
           m = (m < 10) ? "0" + m : m;
           var jam = h + ":" + m;
           
-          if (hari == '0' || hari == 'Jumat') {
+          if (hari == 'Minggu' || hari == 'Jumat') {
             $("#data-jadwal").html(
               `<tr>
                 <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Sekalah Libur!</td>
@@ -157,7 +180,7 @@
                           html += "<td>" + val.jam_mulai + ' - ' + val.jam_selesai + "</td>";
                           html += "<td><h5 class='card-title'>" + val.mapel + "</h5><p class='card-text'><small class='text-muted'>" + val.guru + "</small></p></td>";
                           html += "<td>" + val.kelas + "</td>";
-                          html += "<td>" + val.ruang + "</td>";
+                          html += "<td>" + val.ruangan + "</td>";
                           if (val.ket != null) {
                             html += "<td><div style='margin-left:20px;width:30px;height:30px;background:#"+val.ket+"'></div></td>";
                           } else {

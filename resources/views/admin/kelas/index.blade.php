@@ -38,7 +38,7 @@
                       <button type="button" class="btn btn-success btn-sm" onclick="getEditKelas({{$data->id}})" data-toggle="modal" data-target="#form-kelas">
                         <i class="nav-icon fas fa-edit"></i> &nbsp; Edit
                       </button>
-                      <button class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
+                      <button class="btn btn-danger btn-sm" onclick="return myFunction()"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
                   </form>
               </td>
           </tr>
@@ -71,7 +71,7 @@
               <div class="form-group" id="form_jurusan"></div>
               <div class="form-group">
                 <label for="guru_id">Wali Kelas</label>
-                <select id="guru_id" name="guru_id" class="select2bs4 form-control @error('guru_id') is-invalid @enderror">
+                <select id="guru_id" name="guru_id" class="select2bs4 form-control form-select @error('guru_id') is-invalid @enderror">
                   <option value="">-- Pilih Wali Kelas --</option>
                   @foreach ($guru as $data)
                     <option value="{{ $data->id }}">{{ $data->nama_guru }}</option>
@@ -104,7 +104,7 @@
       $('#form_jurusan').html('');
       $('#form_jurusan').html(`
         <label for="jurusan_id">Jurusan</label>
-        <select id="jurusan_id" name="jurusan_id" class="select2bs4 form-control @error('jurusan_id') is-invalid @enderror">
+        <select id="jurusan_id" name="jurusan_id" class="select2bs4 form-control form-select @error('jurusan_id') is-invalid @enderror">
           <option value="">-- Pilih Jurusan --</option>
           @foreach ($paket as $data)
             <option value="{{ $data->id }}">{{ $data->ket }}</option>
@@ -148,74 +148,15 @@
       });
     }
 
-    function getSubsSiswa(id){
-      var parent = id;
-      $.ajax({
-        type:"GET",
-        data:"id="+parent,
-        dataType:"JSON",
-        url:"{{ url('/siswa/view/json') }}",
-        success:function(result){
-          // console.log(result);
-          var siswa = "";
-          if(result){
-            $.each(result,function(index, val){
-              $("#judul-siswa").text('View Data Siswa ' + val.kelas);
-              siswa += "<tr>";
-                siswa += "<td>"+val.no_induk+"</td>";
-                siswa += "<td>"+val.nama_siswa+"</td>";
-                siswa += "<td>"+val.jk+"</td>";
-                siswa += "<td><img src='"+val.foto+"' width='100px'></td>";
-              siswa+="</tr>";
-            });
-            $("#data-siswa").html(siswa);
-          }
-        },
-        error:function(){
-          toastr.error("Errors 404!");
-        },
-        complete:function(){
-        }
-      });
-      $("#link-siswa").attr("href", "https://siakad.didev.id/listsiswapdf/"+id);
-    }
-    
-    function getSubsJadwal(id){
-      var parent = id;
-      $.ajax({
-        type:"GET",
-        data:"id="+parent,
-        dataType:"JSON",
-        url:"{{ url('/jadwal/view/json') }}",
-        success:function(result){
-          // console.log(result);
-          var jadwal = "";
-          if(result){
-            $.each(result,function(index, val){
-              $("#judul-jadwal").text('View Data Jadwal ' + val.kelas);
-              jadwal += "<tr>";
-                jadwal += "<td>"+val.hari+"</td>";
-                jadwal += "<td><h5 class='card-title'>"+val.mapel+"</h5><p class='card-text'><small class='text-muted'>"+val.guru+"</small></p></td>";
-                jadwal += "<td>"+val.jam_mulai+" - "+val.jam_selesai+"</td>";
-                jadwal += "<td>"+val.ruang+"</td>";
-              jadwal+="</tr>";
-            });
-            $("#data-jadwal").html(jadwal);
-          }
-        },
-        error:function(){
-          toastr.error("Errors 404!");
-        },
-        complete:function(){
-        }
-      });
-      $("#link-jadwal").attr("href", "https://siakad.didev.id/jadwalkelaspdf/"+id);
-    }
+    function myFunction() {
+      if(!confirm("Anda Yakin Ingin Menghapus Data Ini?"))
+      event.preventDefault();
+    };
 
     $("#MasterData").addClass("active");
     $("#liMasterData").addClass("menu-open");
     $("#DataKelas").addClass("active");
-
+    
     $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
     })
