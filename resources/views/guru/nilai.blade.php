@@ -105,7 +105,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#back').click(function() {
-        window.location="{{ url('/') }}";
+        window.location="{{ url('/nilai') }}";
         });
     });
     $("#NilaiGuru").addClass("active");

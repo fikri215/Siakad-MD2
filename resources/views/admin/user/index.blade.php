@@ -52,7 +52,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="email">E-Mail Address</label>
+                  <label for="email">E-Mail Address *</label>
                   <input id="email" type="email" placeholder="{{ __('E-Mail Address') }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
                   @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -78,7 +78,7 @@
                 <div class="form-group" id="noId">
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
+                  <label for="password">Password *</label>
                   <input id="password" type="password" placeholder="{{ __('Password') }}" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
                   @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -87,7 +87,7 @@
                   @enderror
                 </div>
                 <div class="form-group">
-                  <label for="password-confirm">Confirm Password</label>
+                  <label for="password-confirm">Confirm Password *</label>
                   <input id="password-confirm" type="password" placeholder="{{ __('Confirm Password') }}" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" autocomplete="new-password">
                   @error('password')
                     <span class="invalid-feedback" role="alert">
@@ -113,9 +113,9 @@
         $('#role').change(function(){
             var kel = $('#role option:selected').val();
             if (kel == "Guru") {
-              $("#noId").html('<label for="nomer">Nomer Id Card</label><input id="nomer" type="text" maxlength="5" onkeypress="return inputAngka(event)" placeholder="No Id Card" class="form-control" name="nomer" autocomplete="off">');
+              $("#noId").html('<label for="nomer">Nomer Id Card *</label><input id="nomer" type="text" maxlength="5" onkeypress="return inputAngka(event)" placeholder="No Id Card" class="form-control" name="nomer" autocomplete="off">');
             } else if(kel == "Siswa") {
-              $("#noId").html(`<label for="nomer">Nomer Induk Siswa</label><input id="nomer" type="text" placeholder="No Induk Siswa" class="form-control" name="nomer" autocomplete="off">`);
+              $("#noId").html(`<label for="nomer">Nomer Induk Siswa *</label><input id="nomer" type="text" placeholder="No Induk Siswa" class="form-control" name="nomer" autocomplete="off">`);
             } else if(kel == "Admin" || kel == "Operator") {
               $("#noId").html(`<label for="name">Username</label><input id="name" type="text" placeholder="Username" class="form-control" name="name" autocomplete="off">`);
             } else {

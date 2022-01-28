@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Jadwal;
 use App\Guru;
 use App\Kehadiran;
@@ -33,12 +34,30 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $hari = date('w');
+        $hari = date('D');
+        $day = array(
+            'Sun' => 'Minggu',
+            'Mon' => 'Senin',
+            'Tue' => 'Selasa',
+            'Wed' => 'Rabu',
+            'Thu' => 'Kamis',
+            'Fri' => 'Jumat',
+            'Sat' => 'Sabtu'
+        );
         $jam = date('H:i');
-        $jadwal = Jadwal::OrderBy('jam_mulai')->OrderBy('jam_selesai')->OrderBy('kelas_id')->where('hari', $hari)->where('jam_mulai', '<=', $jam)->where('jam_selesai', '>=', $jam)->get();
+        $jadwal = Jadwal::OrderBy('jam_mulai')->OrderBy('jam_selesai')->OrderBy('kelas_id')->where('hari', $day[$hari])->get();
+
+        // $guru = Guru::where('id_card', Auth::user()->id_card)->first();
+        // $jadwalguru = Jadwal::OrderBy('jam_mulai')->where('hari', $day[$hari])->where('guru_id', $guru->id)->get();
+
+        // $siswa = Siswa::where('no_induk', Auth::user()->no_induk)->first();
+        // $kelas = Kelas::findorfail($siswa->kelas_id);
+        // $jadwalsiswa = Jadwal::OrderBy('jam_mulai')->where('hari', $day[$hari])->get();
+
         // $pengumuman = Pengumuman::first();
         // $kehadiran = Kehadiran::all();
         return view('home', compact('jadwal'));
+        // return view('home', compact('jadwal', 'guru', 'jadwalguru'));
     }
 
     public function admin()

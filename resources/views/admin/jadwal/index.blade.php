@@ -7,8 +7,8 @@
 <div class="col-md-12">
     
       <div class="card-header">
-            <a href="{{ route('jadwal.form') }}" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-folder-plus"></i> &nbsp; TAMBAH JADWAL</a>   
-          </div>
+        <a href="{{ route('jadwal.form') }}" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-folder-plus"></i> &nbsp; TAMBAH JADWAL</a>   
+      </div>
         
         <div class="card-body">
           <div class="table-responsive">

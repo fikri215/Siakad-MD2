@@ -19,9 +19,15 @@ class NilaiController extends Controller
     {
         $guru = Guru::where('id_card', Auth::user()->id_card)->first();
         $nilai = DescNilai::where('guru_id', $guru->id)->first();
-        return view('guru.nilai', compact('nilai', 'guru'));
+        return view('guru.deskripsi', compact('nilai', 'guru'));
     }
 
+    public function detail()
+    {
+        $guru = Guru::where('id_card', Auth::user()->id_card)->first();
+        $nilai = DescNilai::where('guru_id', $guru->id)->first();
+        return view('guru.nilai', compact('nilai', 'guru'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -57,7 +63,7 @@ class NilaiController extends Controller
             ]
         );
 
-        return redirect()->back()->with('success', 'Data nilai kkm dan predikat berhasil diperbarui!');
+        return redirect('/nilai')->with('success', 'Data nilai kkm dan predikat berhasil diperbarui!');
     }
 
     /**
@@ -69,6 +75,13 @@ class NilaiController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function kill($id)
+    {
+        $nilai = DescNilai::findorfail($id);
+        $nilai->delete();
+        return redirect()->back()->with('success', 'Deskripsi Nilai berhasil dihapus secara permanent');
     }
 
     /**

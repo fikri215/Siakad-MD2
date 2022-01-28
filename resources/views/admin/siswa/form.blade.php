@@ -17,15 +17,15 @@
           <div class="row">
            <div class="col-md-6">
                 <div class="form-group">
-                        <label for="no_induk">Nomor Induk</label>
+                        <label for="no_induk">Nomor Induk *</label>
                         <input type="text" id="no_induk" name="no_induk" onkeypress="return inputAngka(event)" class="form-control @error('no_induk') is-invalid @enderror">
                 </div>
                 <div class="form-group">
-                    <label for="nama_siswa">Nama Siswa</label>
+                    <label for="nama_siswa">Nama Siswa *</label>
                     <input type="text" id="nama_siswa" name="nama_siswa" class="form-control @error('nama_siswa') is-invalid @enderror">
                 </div>
                 <div class="form-group">
-                    <label for="jk">Jenis Kelamin</label>
+                    <label for="jk">Jenis Kelamin *</label>
                     <select id="jk" name="jk" class="select2bs4 form-control form-select @error('jk') is-invalid @enderror">
                         <option value="">-- Pilih Jenis Kelamin --</option>
                         <option value="L">Laki-Laki</option>
@@ -48,11 +48,11 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="nis">NIS</label>
+                    <label for="nis">NISN *</label>
                     <input type="text" id="nis" name="nis" onkeypress="return inputAngka(event)" class="form-control @error('nis') is-invalid @enderror">
                 </div>
                 <div class="form-group">
-                    <label for="kelas_id">Kelas</label>
+                    <label for="kelas_id">Kelas *</label>
                     <select id="kelas_id" name="kelas_id" class="select2bs4 form-control form-select @error('kelas_id') is-invalid @enderror">
                         <option value="">-- Pilih Kelas --</option>
                         @foreach ($kelas as $data)

@@ -66,11 +66,11 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="nama_mapel">Nama Mapel</label>
+                  <label for="nama_mapel">Nama Mapel *</label>
                   <input type="text" id="nama_mapel" name="nama_mapel" class="form-control @error('nama_mapel') is-invalid @enderror" placeholder="{{ __('Nama Mata Pelajaran') }}">
                 </div>
                 <div class="form-group">
-                  <label for="jurusan_id">Jurusan</label>
+                  <label for="jurusan_id">Jurusan *</label>
                   <select id="jurusan_id" name="jurusan_id" class="form-control form-select @error('jurusan_id') is-invalid @enderror select2bs4">
                     <option value="">-- Pilih Jurusan Mapel --</option>
                     <option value="4">Semua</option>

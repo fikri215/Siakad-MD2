@@ -103,75 +103,83 @@
                                     </td>
                                     <td class="ctr">
                                         @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_1'])
-                                            <div class="text-center">{{ $data->ulangan($data->id)['ulha_1'] }}</div>
-                                            <input type="hidden" name="ulha_1" class="ulha_1_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_1'] }}">
+                                            {{-- <div class="text-center">{{ $data->ulangan($data->id)['ulha_1'] }}</div>
+                                            <input type="hidden" name="ulha_1" class="ulha_1_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_1'] }}"> --}}
+                                            <input type="text" name="ulha_1" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_1_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_1'] }}" autocomplete="off">
                                         @else
                                             <input type="text" name="ulha_1" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_1_{{$data->id}}" autocomplete="off">
                                         @endif
                                     </td>
                                     <td class="ctr">
                                         @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_2'])
-                                            <div class="text-center">{{ $data->ulangan($data->id)['ulha_2'] }}</div>
-                                            <input type="hidden" name="ulha_2" class="ulha_2_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_2'] }}">
+                                            {{-- <div class="text-center">{{ $data->ulangan($data->id)['ulha_2'] }}</div> --}}
+                                            {{-- <input name="ulha_2" style="margin: auto;" class="form-control text-center ulha_2_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_2'] }}"> --}}
+                                            <input type="text" name="ulha_2" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_2_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_2'] }}" autocomplete="off">
                                         @else
                                             <input type="text" name="ulha_2" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_2_{{$data->id}}" autocomplete="off">
                                         @endif
                                     </td>
                                     <td class="ctr">
                                         @if ($data->ulangan($data->id) && $data->ulangan($data->id)['uts'])
-                                            <div class="text-center">{{ $data->ulangan($data->id)['uts'] }}</div>
-                                            <input type="hidden" name="uts" class="uts_{{$data->id}}" value="{{ $data->ulangan($data->id)['uts'] }}">
+                                            {{-- <div class="text-center">{{ $data->ulangan($data->id)['uts'] }}</div>
+                                            <input type="hidden" name="uts" class="uts_{{$data->id}}" value="{{ $data->ulangan($data->id)['uts'] }}"> --}}
+                                            <input type="text" name="uts" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center uts_{{$data->id}}" value="{{ $data->ulangan($data->id)['uts'] }}" autocomplete="off">
                                         @else
                                             <input type="text" name="uts" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center uts_{{$data->id}}" autocomplete="off">
                                         @endif
                                     </td>
                                     <td class="ctr">
                                         @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_3'])
-                                            <div class="text-center">{{ $data->ulangan($data->id)['ulha_3'] }}</div>
-                                            <input type="hidden" name="ulha_3" class="ulha_3_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_3'] }}">
+                                            {{-- <div class="text-center">{{ $data->ulangan($data->id)['ulha_3'] }}</div>
+                                            <input type="hidden" name="ulha_3" class="ulha_3_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_3'] }}"> --}}
+                                            <input type="text" name="ulha_3" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_3_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_3'] }}" autocomplete="off">
                                         @else
                                             <input type="text" name="ulha_3" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_3_{{$data->id}}" autocomplete="off">
                                         @endif
                                     </td>
                                     <td class="ctr">
                                         @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_4'])
-                                            <div class="text-center">{{ $data->ulangan($data->id)['ulha_4'] }}</div>
-                                            <input type="hidden" name="ulha_4" class="ulha_4_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_4'] }}">
+                                            {{-- <div class="text-center">{{ $data->ulangan($data->id)['ulha_4'] }}</div>
+                                            <input type="hidden" name="ulha_4" class="ulha_4_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_4'] }}"> --}}
+                                            <input type="text" name="ulha_4" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_4_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_4'] }}" autocomplete="off">
                                         @else
                                             <input type="text" name="ulha_4" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_4_{{$data->id}}" autocomplete="off">
                                         @endif
                                     </td>
                                     <td class="ctr">
                                         @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_5'])
-                                            <div class="text-center">{{ $data->ulangan($data->id)['ulha_5'] }}</div>
-                                            <input type="hidden" name="ulha_5" class="ulha_4_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_5'] }}">
+                                            {{-- <div class="text-center">{{ $data->ulangan($data->id)['ulha_5'] }}</div>
+                                            <input type="hidden" name="ulha_5" class="ulha_5_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_5'] }}"> --}}
+                                            <input type="text" name="ulha_5" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_5_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_5'] }}" autocomplete="off">
                                         @else
                                             <input type="text" name="ulha_5" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_5_{{$data->id}}" autocomplete="off">
                                         @endif
                                     </td>
                                     <td class="ctr">
                                         @if ($data->ulangan($data->id) && $data->ulangan($data->id)['ulha_6'])
-                                            <div class="text-center">{{ $data->ulangan($data->id)['ulha_6'] }}</div>
-                                            <input type="hidden" name="ulha_6" class="ulha_4_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_6'] }}">
+                                            {{-- <div class="text-center">{{ $data->ulangan($data->id)['ulha_6'] }}</div>
+                                            <input type="hidden" name="ulha_6" class="ulha_6_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_6'] }}"> --}}
+                                            <input type="text" name="ulha_6" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_6_{{$data->id}}" value="{{ $data->ulangan($data->id)['ulha_6'] }}" autocomplete="off">
                                         @else
                                             <input type="text" name="ulha_6" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center ulha_6_{{$data->id}}" autocomplete="off">
                                         @endif
                                     </td>
                                     <td class="ctr">
                                         @if ($data->ulangan($data->id) && $data->ulangan($data->id)['uas'])
-                                            <div class="text-center">{{ $data->ulangan($data->id)['uas'] }}</div>
-                                            <input type="hidden" name="uas" class="uas_{{$data->id}}" value="{{ $data->ulangan($data->id)['uas'] }}">
+                                            {{-- <div class="text-center">{{ $data->ulangan($data->id)['uas'] }}</div>
+                                            <input type="hidden" name="uas" class="uas_{{$data->id}}" value="{{ $data->ulangan($data->id)['uas'] }}"> --}}
+                                            <input type="text" name="uas" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center uas_{{$data->id}}" value="{{ $data->ulangan($data->id)['uas'] }}" autocomplete="off">
                                         @else
                                             <input type="text" name="uas" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control text-center uas_{{$data->id}}" autocomplete="off">
                                         @endif
                                     </td>
                                     <td class="ctr sub_{{$data->id}}">
                                         {{-- @if ($data->ulangan($data->id)) --}}
-                                        @if (!empty($data->ulangan($data->id)['ulha_1']) && !empty($data->ulangan($data->id)['ulha_2']) && !empty($data->ulangan($data->id)['ulha_3'])  && !empty($data->ulangan($data->id)['ulha_4'])  && !empty($data->ulangan($data->id)['ulha_5'])  && !empty($data->ulangan($data->id)['ulha_6'])  && !empty($data->ulangan($data->id)['uts'])  && !empty($data->ulangan($data->id)['uas']))
+                                        {{-- @if (!empty($data->ulangan($data->id)['ulha_1']) && !empty($data->ulangan($data->id)['ulha_2']) && !empty($data->ulangan($data->id)['ulha_3'])  && !empty($data->ulangan($data->id)['ulha_4'])  && !empty($data->ulangan($data->id)['ulha_5'])  && !empty($data->ulangan($data->id)['ulha_6'])  && !empty($data->ulangan($data->id)['uts'])  && !empty($data->ulangan($data->id)['uas']))
                                             <i class="fas fa-check" style="font-weight:bold;"></i>
                                         @else
-                                            <button type="button" id="submit-{{$data->id}}" class="btn btn-default btn_click" data-id="{{$data->id}}"><i class="nav-icon fas fa-save"></i></button>
-                                        @endif
+                                        @endif --}}
+                                        <button type="button" id="submit-{{$data->id}}" class="btn btn-default btn_click" data-id="{{$data->id}}"><i class="nav-icon fas fa-save"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -182,6 +190,38 @@
           </div>
         </div>
         <!-- /.card-body -->
+
+        <div class="modal fade bd-example-modal-md" id="form-nilai" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="judul"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('ulangan.store') }}" method="post">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="hidden" id="id" name="id">
+                            <div class="form-group" id="form_nama">
+                                <label for="ulha_1">UH 1</label>
+                                <input type="text" name="ulha_1" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control ulha_1_{{$data->id}}" autocomplete="off">
+                                <label for="ulha_1">UH 2</label>
+                                <input type="text" name="ulha_2" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control ulha_2_{{$data->id}}" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</button>
+                        <button type="button" id="submit-{{$data->id}}" class="btn btn-default btn_click" data-id="{{$data->id}}"><i class="nav-icon fas fa-save"></i></button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
 </div>
 @endsection
 @section('script')

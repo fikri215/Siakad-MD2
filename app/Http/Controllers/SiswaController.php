@@ -51,6 +51,7 @@ class SiswaController extends Controller
     {
         $this->validate($request, [
             'no_induk' => 'required|string|unique:siswa',
+            'nis' => 'required|min:8|max:12',
             'nama_siswa' => 'required',
             'jk' => 'required',
             'kelas_id' => 'required'

@@ -1,7 +1,7 @@
 @extends('template_backend.home')
-@section('heading', 'Show Ulangan')
+@section('heading', 'Lihat Ulangan')
 @section('page')
-  <div class="breadcrumb-item active">Show Ulangan</div>
+  <div class="breadcrumb-item active">Lihat Ulangan</div>
 @endsection
 @section('content')
 <div class="col-md-12">
@@ -68,10 +68,13 @@
                         <tr>
                             <th class="ctr">No.</th>
                             <th>Mata Pelajaran</th>
-                            <th class="ctr">ULHA 1</th>
-                            <th class="ctr">ULHA 2</th>
+                            <th class="ctr">UH 1</th>
+                            <th class="ctr">UH 2</th>
                             <th class="ctr">UTS</th>
-                            <th class="ctr">ULHA 3</th>
+                            <th class="ctr">UH 3</th>
+                            <th class="ctr">UH 4</th>
+                            <th class="ctr">UH 5</th>
+                            <th class="ctr">UH 6</th>
                             <th class="ctr">UAS</th>
                         </tr>
                     </thead>
@@ -92,11 +95,17 @@
                                     <td class="ctr">-</td>
                                     <td class="ctr">-</td>
                                     <td class="ctr">-</td>
+                                    <td class="ctr">-</td>
+                                    <td class="ctr">-</td>
+                                    <td class="ctr">-</td>
                                     @else
                                     <td class="ctr">{{ $data->cekUlangan($jsonData)['ulha_1'] }}</td>
                                     <td class="ctr">{{ $data->cekUlangan($jsonData)['ulha_2'] }}</td>
                                     <td class="ctr">{{ $data->cekUlangan($jsonData)['uts'] }}</td>
                                     <td class="ctr">{{ $data->cekUlangan($jsonData)['ulha_3'] }}</td>
+                                    <td class="ctr">{{ $data->cekUlangan($jsonData)['ulha_4'] }}</td>
+                                    <td class="ctr">{{ $data->cekUlangan($jsonData)['ulha_5'] }}</td>
+                                    <td class="ctr">{{ $data->cekUlangan($jsonData)['ulha_6'] }}</td>
                                     <td class="ctr">{{ $data->cekUlangan($jsonData)['uas'] }}</td>
                                     @endif
                                 </tr>

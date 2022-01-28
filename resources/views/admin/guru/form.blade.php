@@ -17,7 +17,7 @@
         <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                    <label for="nama_guru">Nama Guru</label>
+                    <label for="nama_guru">Nama Guru *</label>
                     <input type="text" id="nama_guru" name="nama_guru" class="form-control @error('nama_guru') is-invalid @enderror">
             </div>
             <div class="form-group">
@@ -29,7 +29,7 @@
                     <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control @error('tgl_lahir') is-invalid @enderror">
             </div>
             <div class="form-group">
-                    <label for="jk">Jenis Kelamin</label>
+                    <label for="jk">Jenis Kelamin *</label>
                     <select id="jk" name="jk" class="select2bs4 form-control form-select @error('jk') is-invalid @enderror">
                         <option value="">-- Pilih Jenis Kelamin --</option>
                         <option value="L">Laki-Laki</option>
@@ -43,11 +43,11 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                    <label for="nip">NIP</label>
+                    <label for="nip">NIP *</label>
                     <input type="text" id="nip" name="nip" onkeypress="return inputAngka(event)" class="form-control @error('nip') is-invalid @enderror">
             </div>
             <div class="form-group">
-                    <label for="mapel_id">Mapel</label>
+                    <label for="mapel_id">Mapel *</label>
                     <select id="mapel_id" name="mapel_id" class="select2bs4 form-control form-select @error('mapel_id') is-invalid @enderror">
                         <option value="">-- Pilih Mapel --</option>
                         @foreach ($mapel as $data)
@@ -70,11 +70,11 @@
                     }
                 @endphp
             <div class="form-group">
-                    <label for="id_card">Nomor ID Card</label>
+                    <label for="id_card">Nomor ID Card </label>
                     <input type="text" id="id_card" name="id_card" maxlength="5" onkeypress="return inputAngka(event)" value="{{ $id_card }}" class="form-control @error('id_card') is-invalid @enderror" readonly>
             </div>
             <div class="form-group">
-                    <label for="kode">Kode Jadwal</label>
+                    <label for="kode">Kode Jadwal *</label>
                     <input type="text" id="kode" name="kode" maxlength="3" onkeyup="this.value = this.value.toUpperCase()" class="form-control @error('kode') is-invalid @enderror">
             </div>
             <div class="form-group">

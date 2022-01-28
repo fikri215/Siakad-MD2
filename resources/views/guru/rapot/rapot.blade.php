@@ -67,6 +67,7 @@
                 </table>
                 <hr>
             </div>
+            
             <div class="col-md-12">
                 <table id="example2" class="table table-bordered table-striped table-hover">
                     <thead>

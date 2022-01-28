@@ -10,7 +10,7 @@
 <div class="col-md-12">
         <div class="card-header"></div>
         <div class="card-body">
-          <table id="" class="table table-bordered table-striped table-hover">
+          <table id="example1" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th>Hari</th>
@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($jadwal as $data)
                 <tr>
-                    <td>{{ $data->hari}}</td>
+                    <td>{{ $data->hari }}</td>
                     <td>{{ $data->kelas->nama_kelas }}</td>
                     <td>{{ $data->jam_mulai }} - {{ $data->jam_selesai }}</td>
                     <td>{{ $data->ruangan }}</td>

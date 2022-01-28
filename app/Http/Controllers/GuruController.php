@@ -56,6 +56,7 @@ class GuruController extends Controller
     {
         $this->validate($request, [
             'id_card' => 'required',
+            'nip' => 'required',
             'nama_guru' => 'required',
             'mapel_id' => 'required',
             'kode' => 'required|string|unique:guru|min:2|max:3',

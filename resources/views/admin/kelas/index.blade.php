@@ -70,7 +70,7 @@
               <div class="form-group" id="form_nama"></div>
               <div class="form-group" id="form_jurusan"></div>
               <div class="form-group">
-                <label for="guru_id">Wali Kelas</label>
+                <label for="guru_id">Wali Kelas *</label>
                 <select id="guru_id" name="guru_id" class="select2bs4 form-control form-select @error('guru_id') is-invalid @enderror">
                   <option value="">-- Pilih Wali Kelas --</option>
                   @foreach ($guru as $data)
@@ -97,13 +97,13 @@
       $("#judul").text('Tambah Data Kelas');
       $('#id').val('');
       $('#form_nama').html(`
-        <label for="nama_kelas">Nama Kelas</label>
+        <label for="nama_kelas">Nama Kelas *</label>
         <input type='text' id="nama_kelas" onkeyup="this.value = this.value.toUpperCase()" name='nama_kelas' class="form-control @error('nama_kelas') is-invalid @enderror" placeholder="{{ __('Nama Kelas') }}">
       `);
       $('#nama_kelas').val('');
       $('#form_jurusan').html('');
       $('#form_jurusan').html(`
-        <label for="jurusan_id">Jurusan</label>
+        <label for="jurusan_id">Jurusan *</label>
         <select id="jurusan_id" name="jurusan_id" class="select2bs4 form-control form-select @error('jurusan_id') is-invalid @enderror">
           <option value="">-- Pilih Jurusan --</option>
           @foreach ($paket as $data)

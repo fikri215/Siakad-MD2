@@ -1,7 +1,7 @@
 @extends('template_backend.home')
-@section('heading', 'Show Rapot')
+@section('heading', 'Lihat Rapot')
 @section('page')
-  <div class="breadcrumb-item active">Show Rapot</div>
+  <div class="breadcrumb-item active">Lihat Rapot</div>
 @endsection
 @section('content')
 <div class="col-md-12">

@@ -8,7 +8,7 @@
         <h3>Jadwal Hari Ini</h3>
       </div>
         <div class="card-body">
-              <table class="table table-striped table-hover">
+              <table id="example1" class="table table-striped table-hover">
                 <thead>
                   <tr>
                     <th>Jam Pelajaran</th>
@@ -19,9 +19,53 @@
                 </thead>
                 <tbody id="data-jadwal">
                     @php
-                      $hari = date('w');
+                      $hari = date('D');
                       $jam = date('H:i');
+                      $day = array(
+                          'Sun' => 'Minggu',
+                          'Mon' => 'Senin',
+                          'Tue' => 'Selasa',
+                          'Wed' => 'Rabu',
+                          'Thu' => 'Kamis',
+                          'Fri' => 'Jumat',
+                          'Sat' => 'Sabtu'
+                      );
                     @endphp
+                    @if (Auth::user()->role == 'Admin')
+                      @if ( $jadwal->count() > 0 )
+                        @foreach ($jadwal as $data)
+                        <tr>
+                            <td>{{ $data->jam_mulai.' - '.$data->jam_selesai }}</td>
+                            <td>
+                              <h6 class="card-title mt-2 mb-n1">{{ $data->mapel->nama_mapel }}</h6>
+                              <p class="card-text text-muted">{{ $data->guru->nama_guru }}</small></p>
+                            </td>
+                            <td>{{ $data->kelas->nama_kelas }}</td>
+                            <td>{{ $data->ruangan }}</td>
+                          </tr>
+                        @endforeach
+                      @else
+                        <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak Ada Jadwal!</td>
+                      @endif
+                        
+                    {{-- @elseif (Auth::user()->guru(Auth::user()->id_card) == $guru)
+                    @if ( $jadwalguru->count() > 0 )
+                        @foreach ($jadwalguru as $data)
+                        <tr>
+                            <td>{{ $data->jam_mulai.' - '.$data->jam_selesai }}</td>
+                            <td>
+                              <h6 class="card-title mt-2 mb-n1">{{ $data->mapel->nama_mapel }}</h6>
+                              <p class="card-text text-muted">{{ $data->guru->nama_guru }}</small></p>
+                            </td>
+                            <td>{{ $data->kelas->nama_kelas }}</td>
+                            <td>{{ $data->ruangan }}</td>
+                          </tr>
+                        @endforeach
+                      @else
+                        <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak Ada Jadwal!</td>
+                      @endif   --}}
+                        
+                    @endif
                     {{-- @if ( $jadwal->count() > 0 )
                       @if ( $hari == 'Senin' || $hari == 'Selasa' || $hari == 'Rabu' || $hari == 'Kamis' || $hari == 'Jumat')
                       @foreach ($jadwal as $data)
@@ -45,7 +89,7 @@
                         <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak ada data jadwal!</td>
                       </tr>
                     @endif --}}
-                    @if ( $jadwal->count() > 0 )
+                    {{-- @if ( $jadwal->count() > 0 )
                       @if (
                         $hari == 'Senin' && $jam >= '09:45' && $jam <= '10:15' ||
                         $hari == 'Senin' && $jam >= '12:30' && $jam <= '13:15' ||
@@ -73,7 +117,7 @@
                           <td>{{ $data->ruangan }}</td>
                         </tr>
                       @endforeach
-                      @endif
+                      @endif --}}
                   {{-- @elseif ($jam <= '07:00')
                     <tr>
                       <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Jam Pelajaran Hari ini Akan Segera Dimulai!</td>
@@ -92,11 +136,11 @@
                   <tr>
                     <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Sekolah Libur!</td>
                   </tr> --}}
-                @else
+                {{-- @else
                   <tr>
                     <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak Ada Data Jadwal!</td>
                   </tr>
-                @endif
+                @endif --}}
             </tbody>
           </table>
         </div>
