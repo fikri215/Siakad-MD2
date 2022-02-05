@@ -11,6 +11,8 @@ use App\Siswa;
 use App\Mapel;
 use App\User;
 use App\Jurusan;
+use App\Nilai;
+use App\Rapot;
 use App\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -44,20 +46,34 @@ class HomeController extends Controller
             'Fri' => 'Jumat',
             'Sat' => 'Sabtu'
         );
-        $jam = date('H:i');
-        $jadwal = Jadwal::OrderBy('jam_mulai')->OrderBy('jam_selesai')->OrderBy('kelas_id')->where('hari', $day[$hari])->get();
+        
+        if(Auth::user()->role == "Guru") {
+            $guru = Guru::where('id_card', Auth::user()->id_card)->first();
+            $jguru = Jadwal::where('guru_id', $guru->id)->get();
+            $jadwalguru = Jadwal::OrderBy('jam_mulai')->where('hari', $day[$hari])->where('guru_id', $guru->id)->get();
+            $absen = Kelas::where('guru_id', $guru->id)->count();
+            $tkelas = $jguru->groupBy('kelas_id')->count();
+            $tjadwal = $jguru->count();
+            return view('home', compact('guru', 'jadwalguru', 'tjadwal', 'tkelas', 'absen'));  
+        } 
+        elseif (Auth::user()->role == "Siswa") {
+            $siswa = Siswa::where('no_induk', Auth::user()->no_induk)->first();
+            // $jadwalsiswa = Jadwal::OrderBy('jam_mulai')->where('hari', $day[$hari])->get();
+            
+            $kelas = Kelas::findorfail($siswa->kelas_id);
+            $jadwalsiswa = Jadwal::orderBy('hari')->OrderBy('jam_mulai')->where('hari', $day[$hari])->where('kelas_id', $kelas->id)->get();
+            $jsiswa = Jadwal::where('kelas_id', $kelas->id)->get();
+            $tjadwal = $jsiswa->count();
+            return view('home', compact('jadwalsiswa', 'siswa', 'tjadwal'));
+        }
+        else {
+            $jam = date('H:i');
+            $jadwal = Jadwal::OrderBy('jam_mulai')->OrderBy('jam_selesai')->OrderBy('kelas_id')->where('hari', $day[$hari])->get();
+            return view('home', compact('jadwal'));
 
-        // $guru = Guru::where('id_card', Auth::user()->id_card)->first();
-        // $jadwalguru = Jadwal::OrderBy('jam_mulai')->where('hari', $day[$hari])->where('guru_id', $guru->id)->get();
-
-        // $siswa = Siswa::where('no_induk', Auth::user()->no_induk)->first();
-        // $kelas = Kelas::findorfail($siswa->kelas_id);
-        // $jadwalsiswa = Jadwal::OrderBy('jam_mulai')->where('hari', $day[$hari])->get();
-
-        // $pengumuman = Pengumuman::first();
-        // $kehadiran = Kehadiran::all();
-        return view('home', compact('jadwal'));
-        // return view('home', compact('jadwal', 'guru', 'jadwalguru'));
+        }
+        
+        
     }
 
     public function admin()

@@ -32,6 +32,14 @@ class RapotController extends Controller
         return view('guru.rapot.kelas', compact('kelas', 'guru'));
     }
 
+    public function absen()
+    {
+        $guru = Guru::where('id_card', Auth::user()->id_card)->first();
+        $jadwal = Kelas::where('guru_id', $guru->id)->get();
+
+        return view('guru.rapot.kelas-absen', compact('jadwal', 'guru'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -87,6 +95,15 @@ class RapotController extends Controller
         $kelas = Kelas::findorfail($id);
         $siswa = Siswa::where('kelas_id', $id)->get();
         return view('guru.rapot.rapot', compact('guru', 'kelas', 'siswa'));
+    }
+
+    public function showAbsen($id)
+    {
+        $id = Crypt::decrypt($id);
+        $guru = Guru::where('id_card', Auth::user()->id_card)->first();
+        $kelas = Kelas::findorfail($id);
+        $siswa = Siswa::where('kelas_id', $id)->get();
+        return view('guru.rapot.rapot-absen', compact('guru', 'kelas', 'siswa'));
     }
 
     /**

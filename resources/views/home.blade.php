@@ -2,6 +2,89 @@
 @section('heading', 'Dashboard')
 @section('page')
 @endsection
+@section('precontent')
+@if (Auth::user()->role == "Guru")
+  @if (Auth::user()->guru(Auth::user()->id_card) == $guru)
+    <div class="row">
+      <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+          <a href="{{ route('jadwal.guru') }}">
+              <div class="card card-statistic-1">
+              <div class="card-icon bg-info">
+                  <i class="fas fa-calendar"></i>
+              </div>
+              <div class="card-wrap">
+                  <div class="card-header">
+                  <h5>Jadwal</h5>
+                  </div>
+                  <div class="card-body mt-n1">
+                  {{ $tjadwal }}
+                  </div>
+              </div>
+              </div>
+          </a>
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+          <a href="{{ route('ulangan.index') }}">
+              <div class="card card-statistic-1">
+              <div class="card-icon bg-danger">
+                  <i class="fas fa-home"></i>
+              </div>
+              <div class="card-wrap">
+                  <div class="card-header">
+                  <h5>Kelas Mengajar</h5>
+                  </div>
+                  <div class="card-body mt-n1">
+                  {{ $tkelas }}
+                  </div>
+              </div>
+              </div>
+          </a>
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+          <a href="{{ route('absen.guru') }}">
+              <div class="card card-statistic-1">
+              <div class="card-icon bg-success">
+                  <i class="fas fa-users"></i>
+              </div>
+              <div class="card-wrap">
+                  <div class="card-header">
+                  <h5>Absensi Siswa</h5>
+                  </div>
+                  <div class="card-body mt-n1">
+                  {{ $absen }}
+                  </div>
+              </div>
+              </div>
+          </a>
+      </div>
+    </div>
+  @else
+  @endif
+@elseif (Auth::user()->role == "Siswa")
+  @if (Auth::user()->siswa(Auth::user()->no_induk) == $siswa)
+    <div class="row">
+      <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+          <a href="{{ route('jadwal.siswa') }}">
+              <div class="card card-statistic-1">
+              <div class="card-icon bg-info">
+                  <i class="fas fa-calendar"></i>
+              </div>
+              <div class="card-wrap">
+                  <div class="card-header">
+                  <h5>Jadwal</h5>
+                  </div>
+                  <div class="card-body mt-n1">
+                  {{ $tjadwal }}
+                  </div>
+              </div>
+              </div>
+          </a>
+      </div>
+    @endif
+@endif
+
+@endsection
+    
 @section('content')
     <div class="col-md-12" id="load_content">
       <div class="card-header">
@@ -45,102 +128,50 @@
                           </tr>
                         @endforeach
                       @else
-                        <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak Ada Jadwal!</td>
+                        <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak Ada Jadwal Pelajaran Hari ini!</td>
                       @endif
-                        
-                    {{-- @elseif (Auth::user()->guru(Auth::user()->id_card) == $guru)
-                    @if ( $jadwalguru->count() > 0 )
-                        @foreach ($jadwalguru as $data)
-                        <tr>
-                            <td>{{ $data->jam_mulai.' - '.$data->jam_selesai }}</td>
-                            <td>
-                              <h6 class="card-title mt-2 mb-n1">{{ $data->mapel->nama_mapel }}</h6>
-                              <p class="card-text text-muted">{{ $data->guru->nama_guru }}</small></p>
-                            </td>
-                            <td>{{ $data->kelas->nama_kelas }}</td>
-                            <td>{{ $data->ruangan }}</td>
-                          </tr>
-                        @endforeach
+                    
+                    @elseif (Auth::user()->role == "Guru")
+                      @if (Auth::user()->guru(Auth::user()->id_card) == $guru)
+                        @if ( $jadwalguru->count() > 0 )
+                          @foreach ($jadwalguru as $data)
+                          <tr>
+                              <td>{{ $data->jam_mulai.' - '.$data->jam_selesai }}</td>
+                              <td>
+                                <h6 class="card-title mt-2 mb-n1">{{ $data->mapel->nama_mapel }}</h6>
+                                <p class="card-text text-muted">{{ $data->guru->nama_guru }}</small></p>
+                              </td>
+                              <td>{{ $data->kelas->nama_kelas }}</td>
+                              <td>{{ $data->ruangan }}</td>
+                            </tr>
+                          @endforeach
+                        @else
+                          <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak Ada Jadwal Mengajar Hari ini!</td>
+                        @endif
                       @else
-                        <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak Ada Jadwal!</td>
-                      @endif   --}}
+                      @endif
+                    
+                    @elseif (Auth::user()->role == "Siswa")
+                      @if (Auth::user()->siswa(Auth::user()->no_induk) == $siswa)
+                        @if ( $jadwalsiswa->count() > 0 )
+                          @foreach ($jadwalguru as $data)
+                          <tr>
+                              <td>{{ $data->jam_mulai.' - '.$data->jam_selesai }}</td>
+                              <td>
+                                <h6 class="card-title mt-2 mb-n1">{{ $data->mapel->nama_mapel }}</h6>
+                                <p class="card-text text-muted">{{ $data->guru->nama_guru }}</small></p>
+                              </td>
+                              <td>{{ $data->kelas->nama_kelas }}</td>
+                              <td>{{ $data->ruangan }}</td>
+                            </tr>
+                          @endforeach
+                        @else
+                          <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak Ada Jadwal Belajar Hari ini!</td>
+                        @endif
+                      @else
+                      @endif   
                         
                     @endif
-                    {{-- @if ( $jadwal->count() > 0 )
-                      @if ( $hari == 'Senin' || $hari == 'Selasa' || $hari == 'Rabu' || $hari == 'Kamis' || $hari == 'Jumat')
-                      @foreach ($jadwal as $data)
-                      <tr>
-                        <td>{{ $data->jam_mulai.' - '.$data->jam_selesai }}</td>
-                        <td>
-                          <h6 class="card-title mt-2 mb-n1">{{ $data->mapel->nama_mapel }}</h6>
-                          <p class="card-text text-muted">{{ $data->guru->nama_guru }}</small></p>
-                        </td>
-                        <td>{{ $data->kelas->nama_kelas }}</td>
-                        <td>{{ $data->ruangan }}</td>
-                      </tr>
-                      @endforeach
-                      @elseif ($hari == 'Minggu' || $hari == 'Jumat')
-                      <tr>
-                        <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Sekolah Libur!</td>
-                      </tr>
-                      @endif
-                    @else
-                      <tr>
-                        <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak ada data jadwal!</td>
-                      </tr>
-                    @endif --}}
-                    {{-- @if ( $jadwal->count() > 0 )
-                      @if (
-                        $hari == 'Senin' && $jam >= '09:45' && $jam <= '10:15' ||
-                        $hari == 'Senin' && $jam >= '12:30' && $jam <= '13:15' ||
-                        $hari == 'Selasa' && $jam >= '09:15' && $jam <= '09:45' ||
-                        $hari == 'Selasa' && $jam >= '12:00' && $jam <= '13:00' ||
-                        $hari == 'Rabu' && $jam >= '09:15' && $jam <= '09:45' ||
-                        $hari == 'Rabu' && $jam >= '12:00' && $jam <= '13:00' ||
-                        $hari == 'Kamis' && $jam >= '09:15' && $jam <= '09:45' ||
-                        $hari == 'Kamis' && $jam >= '12:00' && $jam <= '13:00' ||
-                        $hari == 'Jumat' && $jam >= '09:00' && $jam <= '09:15' ||
-                        $hari == 'Jumat' && $jam >= '11:15' && $jam <= '13:00'
-                      )
-                      <tr>
-                        <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Waktunya Istirahat!</td>
-                      </tr>
-                      @else
-                      @foreach ($jadwal as $data)
-                        <tr>
-                          <td>{{ $data->jam_mulai.' - '.$data->jam_selesai }}</td>
-                          <td>
-                              <h6 class="card-title mt-2 mb-n1">{{ $data->mapel->nama_mapel }}</h6>
-                              <p class="card-text text-muted">{{ $data->guru->nama_guru }}</small></p>
-                          </td>
-                          <td>{{ $data->kelas->nama_kelas }}</td>
-                          <td>{{ $data->ruangan }}</td>
-                        </tr>
-                      @endforeach
-                      @endif --}}
-                  {{-- @elseif ($jam <= '07:00')
-                    <tr>
-                      <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Jam Pelajaran Hari ini Akan Segera Dimulai!</td>
-                    </tr>
-                @elseif (
-                  $hari == 'Senin' && $jam >= '16:15' ||
-                  $hari == 'Selasa' && $jam >= '16:00' ||
-                  $hari == 'Rabu' && $jam >= '16:00' ||
-                  $hari == 'Kamis' && $jam >= '16:00' ||
-                  $hari == 'Jumat' && $jam >= '15:40'
-                )
-                  <tr>
-                    <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Jam Pelajaran Hari ini Sudah Selesai!</td>
-                  </tr>
-                @elseif ($hari == 'Minggu' || $hari == 'Jumat')
-                  <tr>
-                    <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Sekolah Libur!</td>
-                  </tr> --}}
-                {{-- @else
-                  <tr>
-                    <td colspan='5' style='background:#fff;text-align:center;font-weight:bold;font-size:18px;'>Tidak Ada Data Jadwal!</td>
-                  </tr>
-                @endif --}}
             </tbody>
           </table>
         </div>

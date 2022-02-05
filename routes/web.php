@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/ulangan', 'UlanganController');
     Route::resource('/sikap', 'SikapController');
     Route::get('/rapot/predikat', 'RapotController@predikat');
+    Route::get('/rapot/absen', 'RapotController@absen')->name('absen.guru');
     Route::resource('/rapot', 'RapotController');
   });
 
