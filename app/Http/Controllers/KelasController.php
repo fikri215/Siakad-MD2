@@ -178,7 +178,7 @@ class KelasController extends Controller
             $newForm[] = array(
                 'id' => $val->id,
                 'nama' => $val->nama_kelas,
-                'paket_id' => $val->paket_id,
+                'jurusan_id' => $val->jurusan_id,
                 'guru_id' => $val->guru_id,
             );
         }

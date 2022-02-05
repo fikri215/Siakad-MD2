@@ -190,38 +190,6 @@
           </div>
         </div>
         <!-- /.card-body -->
-
-        <div class="modal fade bd-example-modal-md" id="form-nilai" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-md" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="judul"></h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('ulangan.store') }}" method="post">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input type="hidden" id="id" name="id">
-                            <div class="form-group" id="form_nama">
-                                <label for="ulha_1">UH 1</label>
-                                <input type="text" name="ulha_1" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control ulha_1_{{$data->id}}" autocomplete="off">
-                                <label for="ulha_1">UH 2</label>
-                                <input type="text" name="ulha_2" maxlength="2" onkeypress="return inputAngka(event)" style="margin: auto;" class="form-control ulha_2_{{$data->id}}" autocomplete="off">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</button>
-                        <button type="button" id="submit-{{$data->id}}" class="btn btn-default btn_click" data-id="{{$data->id}}"><i class="nav-icon fas fa-save"></i></button>
-                    </form>
-                </div>
-                </div>
-            </div>
-        </div>
 </div>
 @endsection
 @section('script')

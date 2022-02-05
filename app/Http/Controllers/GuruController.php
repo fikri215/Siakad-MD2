@@ -56,11 +56,13 @@ class GuruController extends Controller
     {
         $this->validate($request, [
             'id_card' => 'required',
-            'nip' => 'required',
-            'nama_guru' => 'required',
+            'nip' => 'required|min:6|max:15',
+            'nama_guru' => 'required|max:50',
             'mapel_id' => 'required',
             'kode' => 'required|string|unique:guru|min:2|max:3',
-            'jk' => 'required'
+            'jk' => 'required',
+            'tmp_lahir' => 'required|max:50',
+            'tgl_lahir' => 'required|max:10'
         ]);
 
         if ($request->foto) {

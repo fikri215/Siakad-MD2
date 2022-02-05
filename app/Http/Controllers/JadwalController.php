@@ -63,8 +63,8 @@ class JadwalController extends Controller
             'hari' => 'required',
             'kelas_id' => 'required',
             'guru_id' => 'required',
-            'jam_mulai' => 'required',
-            'jam_selesai' => 'required',
+            'jam_mulai' => 'required|min:5|max:5',
+            'jam_selesai' => 'required|min:5|max:5',
             'ruangan' => 'required',
         ]);
 

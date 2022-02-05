@@ -52,9 +52,11 @@ class SiswaController extends Controller
         $this->validate($request, [
             'no_induk' => 'required|string|unique:siswa',
             'nis' => 'required|min:8|max:12',
-            'nama_siswa' => 'required',
+            'nama_siswa' => 'required|max:50',
             'jk' => 'required',
-            'kelas_id' => 'required'
+            'kelas_id' => 'required',
+            'tmp_lahir' =>'required|max:50',
+            'tgl_lahir' => 'required|max:10'
         ]);
 
         if ($request->foto) {

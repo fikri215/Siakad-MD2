@@ -79,7 +79,7 @@
                     <a class="nav-link" href="{{ route('ulangan.index') }}" id="UlanganGuru"><i class="fas fa-pen"></i> <span>Nilai Ulangan</span></a>
                 </li>
                 @if (
-                    Auth::user()->guru(Auth::user()->id_card)->mapel->nama_mapel == "Pendidikan Agama" ||
+                    Auth::user()->guru(Auth::user()->id_card)->mapel->nama_mapel == "Budi Pekerti" ||
                     Auth::user()->guru(Auth::user()->id_card)->mapel->nama_mapel == "Pendidikan Pancasila dan Kewarganegaraan"
                 )
                     <li>

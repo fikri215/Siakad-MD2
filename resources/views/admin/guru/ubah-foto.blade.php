@@ -1,22 +1,13 @@
 @extends('template_backend.home')
 @section('heading', 'Ubah Foto')
 @section('page')
-  <li class="breadcrumb-item active"><a href="{{ route('guru.index') }}">Guru</a></li>
-  <li class="breadcrumb-item active">Ubah Foto</li>
+  <div class="breadcrumb-item active"><a href="{{ route('guru.index') }}">Guru</a></div>
+  <div class="breadcrumb-item active">Ubah Foto</div>
 @endsection
 @section('content')
 <div class="col-md-12">
     <!-- general form elements -->
-    <div class="card card-primary">
       <div class="card-header">
-          <div class="row">
-            <div class="col-md-6">
-              <h3 class="card-title">Form ubah foto</h3>
-            </div>
-              <div class="col-md-6">
-                <h3 class="card-title">Foto Saat ini</h3>
-              </div>
-          </div>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
@@ -43,7 +34,6 @@
                     <img src="{{ asset($guru->foto) }}" class="img img-responsive" alt="" width="30%" />
                 </div>
             </div>
-        </div>
         <!-- /.card-body -->
 
         <div class="card-footer">
