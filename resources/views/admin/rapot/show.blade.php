@@ -63,54 +63,56 @@
                 <hr>
             </div>
             <div class="col-md-12">
-                <table id="example2" class="table table-bordered table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th class="ctr" rowspan="2">No.</th>
-                            <th rowspan="2">Mata Pelajaran</th>
-                            <th class="ctr" colspan="3">Pengetahuan</th>
-                            <th class="ctr" colspan="3">Keterampilan</th>
-                        </tr>
-                        <tr>
-                            <th class="ctr">Nilai</th>
-                            <th class="ctr">Predikat</th>
-                            <th class="ctr">Deskripsi</th>
-                            <th class="ctr">Nilai</th>
-                            <th class="ctr">Predikat</th>
-                            <th class="ctr">Deskripsi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            @foreach ($mapel as $val => $data)
-                                <?php $data = $data[0]; ?>
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $data->mapel->nama_mapel }}</td>
-                                    @php
-                                        $array = array('mapel' => $val, 'siswa' => $siswa->id);
-                                        $jsonData = json_encode($array);
-                                        $result = $data->cekRapot($jsonData);
-                                    @endphp
+                <div class="table-responsive">
+                    <table id="example2" class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class="ctr" rowspan="2">No.</th>
+                                <th rowspan="2">Mata Pelajaran</th>
+                                <th class="ctr" colspan="3">Pengetahuan</th>
+                                <th class="ctr" colspan="3">Keterampilan</th>
+                            </tr>
+                            <tr>
+                                <th class="ctr">Nilai</th>
+                                <th class="ctr">Predikat</th>
+                                <th class="ctr">Deskripsi</th>
+                                <th class="ctr">Nilai</th>
+                                <th class="ctr">Predikat</th>
+                                <th class="ctr">Deskripsi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                @foreach ($mapel as $val => $data)
+                                    <?php $data = $data[0]; ?>
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $data->mapel->nama_mapel }}</td>
+                                        @php
+                                            $array = array('mapel' => $val, 'siswa' => $siswa->id);
+                                            $jsonData = json_encode($array);
+                                            $result = $data->cekRapot($jsonData);
+                                        @endphp
 
-                                    @if ( $result == null )
-                                    <td class="ctr">-</td>
-                                    <td class="ctr">-</td>
-                                    <td class="ctr">-</td>
-                                    <td class="ctr">-</td>
-                                    <td class="ctr">-</td>
-                                    <td class="ctr">-</td>
-                                    @else
-                                    <td class="ctr">{{ $data->cekRapot($jsonData)['p_nilai'] }}</td>
-                                    <td class="ctr">{{ $data->cekRapot($jsonData)['p_predikat'] }}</td>
-                                    <td class="ctr">{{ $data->cekRapot($jsonData)['p_deskripsi'] }}</td>
-                                    <td class="ctr">{{ $data->cekRapot($jsonData)['k_nilai'] }}</td>
-                                    <td class="ctr">{{ $data->cekRapot($jsonData)['k_predikat'] }}</td>
-                                    <td class="ctr">{{ $data->cekRapot($jsonData)['k_deskripsi'] }}</td>
-                                    @endif
-                                </tr>
-                            @endforeach
-                    </tbody>
-                </table>
+                                        @if ( $result == null )
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">-</td>
+                                        @else
+                                        <td class="ctr">{{ $data->cekRapot($jsonData)['p_nilai'] }}</td>
+                                        <td class="ctr">{{ $data->cekRapot($jsonData)['p_predikat'] }}</td>
+                                        <td class="ctr">{{ $data->cekRapot($jsonData)['p_deskripsi'] }}</td>
+                                        <td class="ctr">{{ $data->cekRapot($jsonData)['k_nilai'] }}</td>
+                                        <td class="ctr">{{ $data->cekRapot($jsonData)['k_predikat'] }}</td>
+                                        <td class="ctr">{{ $data->cekRapot($jsonData)['k_deskripsi'] }}</td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
           </div>
         </div>

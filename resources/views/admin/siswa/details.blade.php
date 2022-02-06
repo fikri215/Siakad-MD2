@@ -6,7 +6,6 @@
 @endsection
 @section('content')
 <div class="col-md-12">
-    <div class="card">
         <div class="card-header">
             <a href="{{ route('siswa.index') }}" class="btn btn-default btn-sm"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</a>
         </div>
@@ -15,34 +14,56 @@
                 <div class="col-md-4">
                     <img src="{{ asset($siswa->foto) }}" class="card-img img-details" style="height: 500px" alt="...">
                 </div>
-                <div class="col-md-1 mb-4"></div>
-                <div class="col-md-3">
-                    <h5 class="card-title card-text mb-2 text-dark">Nama</h5><hr>
-                    <h5 class="card-title card-text mb-2 text-dark">No. Induk</h5><hr>
-                    <h5 class="card-title card-text mb-2 text-dark">NIS</h5><hr>
-                    <h5 class="card-title card-text mb-2 text-dark">Kelas</h5><hr>
-                    <h5 class="card-title card-text mb-2 text-dark">Jenis Kelamin</h5><hr>
-                    <h5 class="card-title card-text mb-2 text-dark">Tempat Lahir</h5><hr>
-                    <h5 class="card-title card-text mb-2 text-dark">Tanggal Lahir</h5><hr>
-                    <h5 class="card-title card-text mb-2 text-dark">No. Telepon</h5><hr>
-                </div>
-                <div class="col-md-3">
-                    <h5 class="card-title card-text mb-2">: {{ $siswa->nama_siswa }}</h5><hr>
-                    <h5 class="card-title card-text mb-2">: {{ $siswa->no_induk }}</h5><hr>
-                    <h5 class="card-title card-text mb-2">: {{ $siswa->nis }}</h5><hr>
-                    <h5 class="card-title card-text mb-2">: {{ $siswa->kelas->nama_kelas }}</h5><hr>
-                    @if ($siswa->jk == 'L')
-                        <h5 class="card-title card-text mb-2">: Laki-laki</h5><hr>
-                    @else
-                        <h5 class="card-title card-text mb-2">: Perempuan</h5><hr>
-                    @endif
-                    <h5 class="card-title card-text mb-2">: {{ $siswa->tmp_lahir }}</h5><hr>
-                    <h5 class="card-title card-text mb-2">: {{ date('l, d F Y', strtotime($siswa->tgl_lahir)) }}</h5><hr>
-                    <h5 class="card-title card-text mb-2">: {{ $siswa->telp }}</h5><hr>
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                <table class="table">
+                        <tr>
+                            <td><b>Nama</b></td>
+                            <td>:</td>
+                            <td>{{ $siswa->nama_siswa }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>No Induk</b></td>
+                            <td>:</td>
+                            <td>{{ $siswa->no_induk }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>NISN</b></td>
+                            <td>:</td>
+                            <td>{{ $siswa->nis }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Kelas</b></td>
+                            <td>:</td>
+                            <td>{{ $siswa->kelas->nama_kelas}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Jenis Kelamin</b></td>
+                            <td>:</td>
+                            @if ($siswa->jk == 'L')
+                            <td>Laki-laki</td>
+                            @else
+                            <td>Perempuan</td>
+                            @endif
+                        </tr>
+                        <tr>
+                            <td><b>Tempat Lahir</b></td>
+                            <td>:</td>
+                            <td>{{ $siswa->tmp_lahir }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Tanggal Lahir</b></td>
+                            <td>:</td>
+                            <td>{{ date('l, d F Y', strtotime($siswa->tgl_lahir)) }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>No Telepon</b></td>
+                            <td>:</td>
+                            <td>{{ $siswa->telp }}</td>
+                        </tr>
+                </table>
                 </div>
             </div>
-        </div>
-    </div>
 </div>
 @endsection
 @section('script')

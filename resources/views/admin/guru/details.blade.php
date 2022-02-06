@@ -14,32 +14,59 @@
             <div class="col-md-4">
                 <img src="{{ asset($guru->foto) }}" class="card-img img-details" style="height: 500px;" alt="...">
             </div>
-            <div class="col-md-1 mb-4"></div>
-            <div class="col-md-3">
-                <h5 class="card-title card-text mb-2 text-dark">Nama </h5><hr>
-                <h5 class="card-title card-text mb-2 text-dark">NIP  </h5><hr>
-                <h5 class="card-title card-text mb-2 text-dark">No Id Card </h5><hr>
-                <h5 class="card-title card-text mb-2 text-dark">Guru Mapel </h5><hr>
-                <h5 class="card-title card-text mb-2 text-dark">Kode Jadwal </h5><hr>
-                <h5 class="card-title card-text mb-2 text-dark">Jenis Kelamin </h5><hr>
-                <h5 class="card-title card-text mb-2 text-dark">Tempat Lahir </h5><hr>
-                <h5 class="card-title card-text mb-2 text-dark">Tanggal Lahir </h5><hr>
-                <h5 class="card-title card-text mb-2 text-dark">No. Telepon </h5><hr>
-            </div>
-            <div class="col-md-3">
-                <h5 class="card-title card-text mb-2">: {{ $guru->nama_guru }}</h5><hr>
-                <h5 class="card-title card-text mb-2">: {{ $guru->nip }}</h5><hr>
-                <h5 class="card-title card-text mb-2">: {{ $guru->id_card }}</h5><hr>
-                <h5 class="card-title card-text mb-2">: {{ $guru->mapel->nama_mapel }}</h5><hr>
-                <h5 class="card-title card-text mb-2">: {{ $guru->kode }}</h5><hr>
-                @if ($guru->jk == 'L')
-                    <h5 class="card-title card-text mb-2">: Laki-laki</h5><hr>
-                @else
-                    <h5 class="card-title card-text mb-2">: Perempuan</h5><hr>
-                @endif
-                <h5 class="card-title card-text mb-2">: {{ $guru->tmp_lahir }}</h5><hr>
-                <h5 class="card-title card-text mb-2">: {{ date('l, d F Y', strtotime($guru->tgl_lahir)) }}</h5><hr>
-                <h5 class="card-title card-text mb-2">: {{ $guru->telp }}</h5><hr>
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+            <table class="table">
+                    <tr>
+                        <td><b>Nama</b></td>
+                        <td>:</td>
+                        <td>{{ $guru->nama_guru }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>NIP</b></td>
+                        <td>:</td>
+                        <td>{{ $guru->nip }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>No ID Card</b></td>
+                        <td>:</td>
+                        <td>{{ $guru->id_card }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Guru Mapel</b></td>
+                        <td>:</td>
+                        <td>{{ $guru->mapel->nama_mapel}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Kode Jadwal</b></td>
+                        <td>:</td>
+                        <td>{{ $guru->kode }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Jenis Kelamin</b></td>
+                        <td>:</td>
+                        @if ($guru->jk == 'L')
+                            <td>Laki-laki</td>
+                        @else
+                            <td>Perempuan</td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <td><b>Tempat Lahir</b></td>
+                        <td>:</td>
+                        <td>{{ $guru->tmp_lahir }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Tanggal Lahir</b></td>
+                        <td>:</td>
+                        <td>{{ date('l, d F Y', strtotime($guru->tgl_lahir)) }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>No Telepon</b></td>
+                        <td>:</td>
+                        <td>{{ $guru->telp }}</td>
+                    </tr>
+            </table>
             </div>
         </div>
     </div>

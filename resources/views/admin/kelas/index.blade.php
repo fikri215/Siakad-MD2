@@ -12,39 +12,41 @@
   </div>
   <!-- /.card-header -->
   <div class="card-body">
-    <table id="example1" class="table table-bordered table-striped table-hover">
-      <thead>
-          <tr>
-              <th>No.</th>
-              <th>Kelas</th>
-              <th>Jurusan</th>
-              <th>Wali Kelas</th>
-              <th>Aksi</th>
-          </tr>
-      </thead>
-      <tbody>
-          @foreach ($kelas as $data)
-          <tr>
-              <td>{{ $loop->iteration }}</td>
-              <td>{{ $data->nama_kelas }}</td>
-              <td>{{ $data->jurusan->ket }}</td>
-              <td>{{ $data->guru->nama_guru }}</td>
-              <td>
-                <form action="{{ route('kelas.destroy', $data->id) }}" method="post">
-                  @csrf
-                  @method('delete') 
-                  <a href="{{ route('siswa.kelas', Crypt::encrypt($data->id)) }}" class="btn btn-info btn-sm"><i class="nav-icon fas fa-users"></i> &nbsp; Lihat Siswa</a>
-                  <a href="{{ route('jadwal.show', Crypt::encrypt($data->id)) }}" class="btn btn-warning btn-sm"><i class="nav-icon fas fa-calendar-alt"></i> &nbsp; Lihat Jadwal</a>
-                      <button type="button" class="btn btn-success btn-sm" onclick="getEditKelas({{$data->id}})" data-toggle="modal" data-target="#form-kelas">
-                        <i class="nav-icon fas fa-edit"></i> &nbsp; Edit
-                      </button>
-                      <button class="btn btn-danger btn-sm" onclick="return myFunction()"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
-                  </form>
-              </td>
-          </tr>
-          @endforeach
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table id="example1" class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Kelas</th>
+                <th>Jurusan</th>
+                <th>Wali Kelas</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($kelas as $data)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $data->nama_kelas }}</td>
+                <td>{{ $data->jurusan->ket }}</td>
+                <td>{{ $data->guru->nama_guru }}</td>
+                <td>
+                  <form action="{{ route('kelas.destroy', $data->id) }}" method="post">
+                    @csrf
+                    @method('delete') 
+                    <a href="{{ route('siswa.kelas', Crypt::encrypt($data->id)) }}" class="btn btn-info btn-sm"><i class="nav-icon fas fa-users"></i> &nbsp; Lihat Siswa</a>
+                    <a href="{{ route('jadwal.show', Crypt::encrypt($data->id)) }}" class="btn btn-warning btn-sm"><i class="nav-icon fas fa-calendar-alt"></i> &nbsp; Lihat Jadwal</a>
+                        <button type="button" class="btn btn-success btn-sm" onclick="getEditKelas({{$data->id}})" data-toggle="modal" data-target="#form-kelas">
+                          <i class="nav-icon fas fa-edit"></i> &nbsp; Edit
+                        </button>
+                        <button class="btn btn-danger btn-sm" onclick="return myFunction()"><i class="nav-icon fas fa-trash-alt"></i> &nbsp; Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+      </table>
+    </div>
   <!-- /.card-body -->
   </div>
     <!-- /.card -->
