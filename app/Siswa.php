@@ -38,5 +38,12 @@ class Siswa extends Model
         return $nilai;
     }
 
+    public function absen($id)
+    {
+        $guru = Guru::where('id_card', Auth::user()->id_card)->first();
+        $nilai = Rapot::where('siswa_id', $id)->where('guru_id', $guru->id)->first();
+        return $nilai;
+    }
+
     protected $table = 'siswa';
 }

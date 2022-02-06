@@ -16,9 +16,9 @@
             <div class="col-md-12">
                 <table class="table" style="margin-top: -10px;">
                     <tr>
-                        <td>No Induk / NIS</td>
+                        <td>No Induk / NISN</td>
                         <td>:</td>
-                        <td>{{ Auth::user()->no_induk }} / {{ Auth::user()->nis }}</td>
+                        <td>{{ Auth::user()->no_induk }} / {{ Auth::user()->siswa(Auth::user()->no_induk)->nis }}</td>
                     </tr>
                     <tr>
                         <td>Nama Siswa</td>
@@ -68,70 +68,91 @@
             </div>
             <div class="col-md-12">
                 <div class="row">
-                    {{-- <div class="col-12 mb-3">
-                        <h5 class="mb-3">A. Sikap</h5>
-                       
-                    </div> --}}
                     <div class="col-12 mb-3">
-                        <h5 class="mb-3">Pengetahuan dan Keterampilan</h5>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover">
-                                <thead>
+                        <h5 class="mb-3">A. Absensi</h5>
+                        <table class="table table-bordered table-striped table-hover" style="width: 100px">
+                            <thead>
+                                <tr>
+                                    <th class="ctr">Izin</th>
+                                    <th class="ctr">Sakit</th>
+                                    <th class="ctr">Alpa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (@empty($absen))
+                                <tr>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                @else
+                                <tr>
+                                    <td>{{ $absen->sikap_1 }}</td>
+                                    <td>{{ $absen->sikap_2 }}</td>
+                                    <td>{{ $absen->sikap_3 }}</td>
+                                </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <h5 class="mb-3">B. Pengetahuan dan Keterampilan</h5>
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">No.</th>
+                                    <th rowspan="2">Mata Pelajaran</th>
+                                    <th rowspan="2">KKM</th>
+                                    <th class="ctr" colspan="3">Pengetahuan</th>
+                                    <th class="ctr" colspan="3">Keterampilan</th>
+                                </tr>
+                                <tr>
+                                    <th class="ctr">Nilai</th>
+                                    <th class="ctr">Predikat</th>
+                                    <th class="ctr">Deskripsi</th>
+                                    <th class="ctr">Nilai</th>
+                                    <th class="ctr">Predikat</th>
+                                    <th class="ctr">Deskripsi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($mapel as $val => $data)
                                     <tr>
-                                        <th rowspan="2">No.</th>
-                                        <th rowspan="2">Mata Pelajaran</th>
-                                        <th rowspan="2">KKM</th>
-                                        <th class="ctr" colspan="3">Pengetahuan</th>
-                                        <th class="ctr" colspan="3">Keterampilan</th>
-                                    </tr>
-                                    <tr>
-                                        <th class="ctr">Nilai</th>
-                                        <th class="ctr">Predikat</th>
-                                        <th class="ctr">Deskripsi</th>
-                                        <th class="ctr">Nilai</th>
-                                        <th class="ctr">Predikat</th>
-                                        <th class="ctr">Deskripsi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($mapel as $val => $data)
-                                        <tr>
-                                            <?php $data = $data[0]; ?>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $data->mapel->nama_mapel }}</td>
-                                            @if ( empty($data->nilai($val)) )
-                                                
-                                            <td class="ctr">-</td>
-                                            <td class="ctr">-</td>
-                                            <td class="ctr">-</td>
-                                            <td class="ctr">-</td>
-                                            <td class="ctr">-</td>
-                                            <td class="ctr">-</td>
-                                            <td class="ctr">-</td>
-                                            @else
-                                                
-                                            {{-- <td class="ctr">{{ $data->kkm($data->guru_id) }}</td> --}}
-                                            {{-- <td class="ctr">{{ $data->nilai($val)['p_nilai'] }}</td> --}}
-                                            {{-- <td class="ctr">{{ $data->nilai($data->p_nilai) }}</td>
-                                            <td class="ctr">{{ $data->nilai($data->p_predikat) }}</td>
-                                            <td class="ctr">{{ $data->nilai($data->p_deskripsi) }}</td>
-                                            <td class="ctr">{{ $data->nilai($data->k_nilai) }}</td>
-                                            <td class="ctr">{{ $data->nilai($data->k_predikat) }}</td>
-                                            <td class="ctr">{{ $data->nilai($data->k_deskripsi) }}</td> --}}
-                                            <td class="ctr">{{ $data->kkm($data->nilai($val)['guru_id']) }}</td>
-                                            <td class="ctr">{{ $data->nilai($val)['p_nilai'] }}</td>
-                                            <td class="ctr">{{ $data->nilai($val)['p_predikat'] }}</td>
-                                            <td class="ctr">{{ $data->nilai($val)['p_deskripsi'] }}</td>
-                                            <td class="ctr">{{ $data->nilai($val)['k_nilai'] }}</td>
-                                            <td class="ctr">{{ $data->nilai($val)['k_predikat'] }}</td>
-                                            <td class="ctr">{{ $data->nilai($val)['k_deskripsi'] }}</td>
-                                            @endif
+                                        <?php $data = $data[0]; ?>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $data->mapel->nama_mapel }}</td>
+                                        @if ( empty($data->nilai($val)) )
                                             
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">-</td>
+                                        <td class="ctr">-</td>
+                                        @else
+                                            
+                                        {{-- <td class="ctr">{{ $data->kkm($data->guru_id) }}</td> --}}
+                                        {{-- <td class="ctr">{{ $data->nilai($val)['p_nilai'] }}</td> --}}
+                                        {{-- <td class="ctr">{{ $data->nilai($data->p_nilai) }}</td>
+                                        <td class="ctr">{{ $data->nilai($data->p_predikat) }}</td>
+                                        <td class="ctr">{{ $data->nilai($data->p_deskripsi) }}</td>
+                                        <td class="ctr">{{ $data->nilai($data->k_nilai) }}</td>
+                                        <td class="ctr">{{ $data->nilai($data->k_predikat) }}</td>
+                                        <td class="ctr">{{ $data->nilai($data->k_deskripsi) }}</td> --}}
+                                        <td class="ctr">{{ $data->kkm($data->nilai($val)['guru_id']) }}</td>
+                                        <td class="ctr">{{ $data->nilai($val)['p_nilai'] }}</td>
+                                        <td class="ctr">{{ $data->nilai($val)['p_predikat'] }}</td>
+                                        <td class="ctr">{{ $data->nilai($val)['p_deskripsi'] }}</td>
+                                        <td class="ctr">{{ $data->nilai($val)['k_nilai'] }}</td>
+                                        <td class="ctr">{{ $data->nilai($val)['k_predikat'] }}</td>
+                                        <td class="ctr">{{ $data->nilai($val)['k_deskripsi'] }}</td>
+                                        @endif
+                                        
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

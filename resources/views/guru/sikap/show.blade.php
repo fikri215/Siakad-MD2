@@ -1,7 +1,7 @@
 @extends('template_backend.home')
-@section('heading', 'Input Nilai Sikap')
+@section('heading', 'Input Nilai Absensi')
 @section('page')
-  <div class="breadcrumb-item active">Input Nilai Sikap</div>
+  <div class="breadcrumb-item active">Input Nilai Absensi</div>
 @endsection
 @section('content')
 <div class="col-md-12">
@@ -27,16 +27,6 @@
                     <td>Jumlah Siswa</td>
                     <td>:</td>
                     <td>{{ $siswa->count() }}</td>
-                </tr>
-                <tr>
-                    <td>Mata Pelajaran</td>
-                    <td>:</td>
-                    <td>{{ $guru->mapel->nama_mapel }}</td>
-                </tr>
-                <tr>
-                    <td>Guru Mata Pelajaran</td>
-                    <td>:</td>
-                    <td>{{ $guru->nama_guru }}</td>
                 </tr>
                 @php
                     $bulan = date('m');
@@ -73,13 +63,13 @@
                     <tr>
                         <th rowspan="2" class="ctr">No.</th>
                         <th rowspan="2">Nama Siswa</th>
-                        <th colspan="3" class="ctr">Nilai Sikap</th>
+                        <th colspan="3" class="ctr">Absensi</th>
                         <th rowspan="2" class="ctr">Aksi</th>
                     </tr>
                     <tr>
-                        <th class="ctr">Teman</th>
-                        <th class="ctr">Sendiri</th>
-                        <th class="ctr">Guru</th>
+                        <th class="ctr">Izin</th>
+                        <th class="ctr">Sakit</th>
+                        <th class="ctr">Alpa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -105,7 +95,7 @@
                                         <input type="hidden" name="sikap_1" class="sikap_1_{{$data->id}}" value="{{ $data->sikap($data->id)['sikap_1'] }}">
                                     </td>
                                 @else
-                                    <td class="ctr"><input type="text" name="sikap_1" maxlength="1" onkeypress="return sikap(event)" style="margin: auto;" class="form-control text-center sikap_1_{{$data->id}}" autocomplete="off" autofocus></td>
+                                    <td class="ctr"><input type="text" name="sikap_1" maxlength="2"  style="margin: auto;" class="form-control text-center sikap_1_{{$data->id}}" autocomplete="off" autofocus></td>
                                 @endif
                                 @if ($data->sikap($data->id) && $data->sikap($data->id)['sikap_2'])
                                     <td class="ctr">
@@ -113,7 +103,7 @@
                                         <input type="hidden" name="sikap_2" class="sikap_2_{{$data->id}}" value="{{ $data->sikap($data->id)['sikap_2'] }}">
                                     </td>
                                 @else
-                                    <td class="ctr"><input type="text" name="sikap_2" maxlength="1" onkeypress="return sikap(event)" style="margin: auto;" class="form-control text-center sikap_2_{{$data->id}}" autocomplete="off" autofocus></td>
+                                    <td class="ctr"><input type="text" name="sikap_2" maxlength="2"  style="margin: auto;" class="form-control text-center sikap_2_{{$data->id}}" autocomplete="off" autofocus></td>
                                 @endif
                                 @if ($data->sikap($data->id) && $data->sikap($data->id)['sikap_3'])
                                     <td class="ctr">
@@ -121,7 +111,7 @@
                                         <input type="hidden" name="sikap_3" class="sikap_3_{{$data->id}}" value="{{ $data->sikap($data->id)['sikap_3'] }}">
                                     </td>
                                 @else
-                                    <td class="ctr"><input type="text" name="sikap_3" maxlength="1" onkeypress="return sikap(event)" style="margin: auto;" class="form-control text-center sikap_3_{{$data->id}}" autocomplete="off" autofocus></td>
+                                    <td class="ctr"><input type="text" name="sikap_3" maxlength="2"  style="margin: auto;" class="form-control text-center sikap_3_{{$data->id}}" autocomplete="off" autofocus></td>
                                 @endif
                                 @if ($data->sikap($data->id) && $data->sikap($data->id)['sikap_1'] && $data->sikap($data->id)['sikap_2'] && $data->sikap($data->id)['sikap_3'])
                                     <td class="ctr"><i class="fas fa-check" style="font-weight:bold;"></i></td>

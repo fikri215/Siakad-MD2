@@ -78,7 +78,10 @@
                 <li>
                     <a class="nav-link" href="{{ route('ulangan.index') }}" id="UlanganGuru"><i class="fas fa-pen"></i> <span>Nilai Ulangan</span></a>
                 </li>
-                @if (
+                <li>
+                    <a class="nav-link" href="{{ route('sikap.index') }}" id="RapotGuru"><i class="fas fa-clock"></i> <span>Absensi</span></a>
+                </li>
+                {{-- @if (
                     Auth::user()->guru(Auth::user()->id_card)->mapel->nama_mapel == "Budi Pekerti" ||
                     Auth::user()->guru(Auth::user()->id_card)->mapel->nama_mapel == "Pendidikan Pancasila dan Kewarganegaraan"
                 )
@@ -86,7 +89,7 @@
                         <a class="nav-link" href="{{ route('sikap.index') }}" id="RapotGuru"><i class="fas fa-home"></i> <span>Nilai Sikap</span></a>
                     </li>
                 @else
-                @endif
+                @endif --}}
                 <li>
                     <a class="nav-link" href="{{ route('rapot.index') }}" id="RapotGuru"><i class="fas fa-clipboard"></i> <span>Nilai Rapot</span></a>
                 </li>

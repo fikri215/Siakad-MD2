@@ -40,23 +40,6 @@
               </div>
           </a>
       </div>
-      <div class="col-lg-4 col-md-12 col-sm-12 col-12">
-          <a href="{{ route('absen.guru') }}">
-              <div class="card card-statistic-1">
-              <div class="card-icon bg-success">
-                  <i class="fas fa-users"></i>
-              </div>
-              <div class="card-wrap">
-                  <div class="card-header">
-                  <h5>Absensi Siswa</h5>
-                  </div>
-                  <div class="card-body mt-n1">
-                  {{ $absen }}
-                  </div>
-              </div>
-              </div>
-          </a>
-      </div>
     </div>
   @else
   @endif
@@ -80,6 +63,7 @@
               </div>
           </a>
       </div>
+    </div>
     @endif
 @endif
 

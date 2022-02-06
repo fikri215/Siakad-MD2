@@ -27,11 +27,19 @@
                     <th>Aksi</th>
                 </thead>
                 <tbody>
+                  {{-- @foreach ($kelas as $val => $data)
+                    <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $data[0]->rapot($val)->nama_kelas }}</td>
+                      <td><a href="{{ route('sikap.show', Crypt::encrypt($val)) }}" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-pen"></i> &nbsp; Input Nilai</a></td>
+                    </tr>
+                  @endforeach --}}
                   @foreach ($jadwal as $val => $data)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $data->nama_kelas }}</td>
-                      <td><a href="{{ route('rapot.show', Crypt::encrypt($val)) }}" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-pen"></i> &nbsp; Input Absensi</a></td>
+                      {{-- <td>{{ $data->nama_kelas }}</td> --}}
+                      <td><a href="{{ route('sikap.show', Crypt::encrypt($val)) }}" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-pen"></i> &nbsp; Input Absensi</a></td>
                     </tr>
                   @endforeach
                 </tbody>

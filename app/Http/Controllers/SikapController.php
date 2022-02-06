@@ -24,16 +24,16 @@ class SikapController extends Controller
     public function index()
     {
         $guru = Guru::where('id_card', Auth::user()->id_card)->first();
-        if (
-            $guru->mapel->nama_mapel == "Pendidikan Agama dan Budi Pekerti" ||
-            $guru->mapel->nama_mapel == "Pendidikan Pancasila dan Kewarganegaraan"
-        ) {
-            $jadwal = Jadwal::where('guru_id', $guru->id)->orderBy('kelas_id')->get();
-            $kelas = $jadwal->groupBy('kelas_id');
-            return view('guru.sikap.index', compact('kelas', 'guru'));
-        } else {
-            return redirect()->back()->with('error', 'Maaf guru ini tidak dapat menambahkan nilai sikap!');
-        }
+        $jadwal = Jadwal::where('guru_id', $guru->id)->orderBy('kelas_id')->get();
+        $kelas = $jadwal->groupBy('kelas_id');
+        return view('guru.sikap.index', compact('kelas', 'guru'));
+        // if (
+        //     $guru->mapel->nama_mapel == "Pendidikan Agama dan Budi Pekerti" ||
+        //     $guru->mapel->nama_mapel == "Pendidikan Pancasila dan Kewarganegaraan"
+        // ) {
+        // } else {
+        //     return redirect()->back()->with('error', 'Maaf guru ini tidak dapat menambahkan nilai sikap!');
+        // }
     }
 
     /**
@@ -57,11 +57,11 @@ class SikapController extends Controller
     {
         $guru = Guru::findorfail($request->guru_id);
         $cekJadwal = Jadwal::where('guru_id', $guru->id)->where('kelas_id', $request->kelas_id)->count();
-        if ($cekJadwal >= 1) {
-            if (
-                $guru->mapel->nama_mapel == "Pendidikan Agama dan Budi Pekerti" ||
-                $guru->mapel->nama_mapel == "Pendidikan Pancasila dan Kewarganegaraan"
-            ) {
+        // if ($cekJadwal >= 1) {
+        //     if (
+        //         $guru->mapel->nama_mapel == "Pendidikan Agama dan Budi Pekerti" ||
+        //         $guru->mapel->nama_mapel == "Pendidikan Pancasila dan Kewarganegaraan"
+        //     ) {
                 Sikap::updateOrCreate(
                     [
                         'id' => $request->id
@@ -77,12 +77,12 @@ class SikapController extends Controller
                     ]
                 );
                 return response()->json(['success' => 'Nilai sikap siswa berhasil ditambahkan!']);
-            } else {
-                return redirect()->json(['error' => 'Maaf guru ini tidak dapat menambahkan nilai sikap!']);
-            }
-        } else {
-            return response()->json(['error' => 'Maaf guru ini tidak mengajar kelas ini!']);
-        }
+            // } else {
+            //     return redirect()->json(['error' => 'Maaf guru ini tidak dapat menambahkan nilai sikap!']);
+            // }
+        // } else {
+        //     return response()->json(['error' => 'Maaf guru ini tidak mengajar kelas ini!']);
+        // }
     }
 
     /**

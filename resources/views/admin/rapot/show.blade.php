@@ -14,14 +14,19 @@
             <div class="col-md-12">
                 <table id="example2" class="table" style="margin-top: -10px;">
                     <tr>
+                        <td>Nama Siswa</td>
+                        <td>:</td>
+                        <td>{{ $siswa->nama_siswa }}</td>
+                    </tr>
+                    <tr>
                         <td>No Induk Siswa</td>
                         <td>:</td>
                         <td>{{ $siswa->no_induk }}</td>
                     </tr>
                     <tr>
-                        <td>Nama Siswa</td>
+                        <td>NISN</td>
                         <td>:</td>
-                        <td>{{ $siswa->nama_siswa }}</td>
+                        <td>{{ $siswa->nis }}</td>
                     </tr>
                     <tr>
                         <td>Nama Kelas</td>
