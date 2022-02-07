@@ -89,5 +89,12 @@ class Jadwal extends Model
     return $rapot;
   }
 
+  public function cekSikap($id)
+  {
+    $data = json_decode($id, true);
+    $rapot = Sikap::where('siswa_id', $data['siswa'])->where('mapel_id', $data['mapel'])->first();
+    return $rapot;
+  }
+
   protected $table = 'jadwal';
 }

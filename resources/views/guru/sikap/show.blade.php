@@ -141,7 +141,7 @@
             var kelas_id = $("input[name=kelas_id]").val();
             
             $.ajax({
-                url: "{{ route('sikap.store') }}",
+                url: "{{ route('absensi.store') }}",
                 type: "POST",
                 dataType: 'json',
                 data 	: {

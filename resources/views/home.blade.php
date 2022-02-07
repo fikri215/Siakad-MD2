@@ -138,7 +138,7 @@
                     @elseif (Auth::user()->role == "Siswa")
                       @if (Auth::user()->siswa(Auth::user()->no_induk) == $siswa)
                         @if ( $jadwalsiswa->count() > 0 )
-                          @foreach ($jadwalguru as $data)
+                          @foreach ($jadwalsiswa as $data)
                           <tr>
                               <td>{{ $data->jam_mulai.' - '.$data->jam_selesai }}</td>
                               <td>

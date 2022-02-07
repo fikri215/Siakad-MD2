@@ -58,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/nilai/kill/{id}', 'NilaiController@kill')->name('nilai.kill');
     Route::resource('/nilai', 'NilaiController');
     Route::resource('/ulangan', 'UlanganController');
-    Route::resource('/sikap', 'SikapController');
+    Route::resource('/absensi', 'SikapController');
     Route::get('/rapot/predikat', 'RapotController@predikat');
     Route::get('/rapot/absen', 'RapotController@absen')->name('absen.guru');
     Route::resource('/rapot', 'RapotController');

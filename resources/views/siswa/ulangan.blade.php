@@ -65,52 +65,50 @@
                 <hr>
             </div>
             <div class="col-md-12">
-                    <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
-                        <thead>
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="ctr">No.</th>
+                            <th>Mata Pelajaran</th>
+                            <th class="ctr">UH 1</th>
+                            <th class="ctr">UH 2</th>
+                            <th class="ctr">UTS</th>
+                            <th class="ctr">UH 3</th>
+                            <th class="ctr">UH 4</th>
+                            <th class="ctr">UH 5</th>
+                            <th class="ctr">UH 6</th>
+                            <th class="ctr">UAS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($mapel as $val => $data)
                             <tr>
-                                <th class="ctr">No.</th>
-                                <th>Mata Pelajaran</th>
-                                <th class="ctr">UH 1</th>
-                                <th class="ctr">UH 2</th>
-                                <th class="ctr">UTS</th>
-                                <th class="ctr">UH 3</th>
-                                <th class="ctr">UH 4</th>
-                                <th class="ctr">UH 5</th>
-                                <th class="ctr">UH 6</th>
-                                <th class="ctr">UAS</th>
+                                <?php $data = $data[0]; ?>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $data->mapel->nama_mapel }}</td>
+                                @if ( empty($data->ulangan($val)) )
+                                <td class="ctr">-</td> 
+                                <td class="ctr">-</td> 
+                                <td class="ctr">-</td> 
+                                <td class="ctr">-</td> 
+                                <td class="ctr">-</td> 
+                                <td class="ctr">-</td> 
+                                <td class="ctr">-</td> 
+                                <td class="ctr">-</td> 
+                                @else
+                                <td class="ctr">{{ $data->ulangan($val)['ulha_1'] }}</td>
+                                <td class="ctr">{{ $data->ulangan($val)['ulha_2'] }}</td>
+                                <td class="ctr">{{ $data->ulangan($val)['uts'] }}</td>
+                                <td class="ctr">{{ $data->ulangan($val)['ulha_3'] }}</td>
+                                <td class="ctr">{{ $data->ulangan($val)['ulha_4'] }}</td>
+                                <td class="ctr">{{ $data->ulangan($val)['ulha_5'] }}</td>
+                                <td class="ctr">{{ $data->ulangan($val)['ulha_6'] }}</td>
+                                <td class="ctr">{{ $data->ulangan($val)['uas'] }}</td>
+                                @endif
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($mapel as $val => $data)
-                                <tr>
-                                    <?php $data = $data[0]; ?>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $data->mapel->nama_mapel }}</td>
-                                    @if ( empty($data->ulangan($val)) )
-                                    <td class="ctr">-</td> 
-                                    <td class="ctr">-</td> 
-                                    <td class="ctr">-</td> 
-                                    <td class="ctr">-</td> 
-                                    <td class="ctr">-</td> 
-                                    <td class="ctr">-</td> 
-                                    <td class="ctr">-</td> 
-                                    <td class="ctr">-</td> 
-                                    @else
-                                    <td class="ctr">{{ $data->ulangan($val)['ulha_1'] }}</td>
-                                    <td class="ctr">{{ $data->ulangan($val)['ulha_2'] }}</td>
-                                    <td class="ctr">{{ $data->ulangan($val)['uts'] }}</td>
-                                    <td class="ctr">{{ $data->ulangan($val)['ulha_3'] }}</td>
-                                    <td class="ctr">{{ $data->ulangan($val)['ulha_4'] }}</td>
-                                    <td class="ctr">{{ $data->ulangan($val)['ulha_5'] }}</td>
-                                    <td class="ctr">{{ $data->ulangan($val)['ulha_6'] }}</td>
-                                    <td class="ctr">{{ $data->ulangan($val)['uas'] }}</td>
-                                    @endif
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
           </div>
         </div>

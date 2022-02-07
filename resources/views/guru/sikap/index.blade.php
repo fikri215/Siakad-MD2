@@ -20,7 +20,7 @@
               @if(Auth::user()->guru(Auth::user()->id_card)->id == $data[0]->rapot($val)->guru->id)
                 <tr>
                   <td>{{ $data[0]->rapot($val)->nama_kelas }}</td>
-                  <td><a href="{{ route('sikap.show', Crypt::encrypt($val)) }}" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-pen"></i> &nbsp; Input Absensi</a></td>
+                  <td><a href="{{ route('absensi.show', Crypt::encrypt($val)) }}" class="btn btn-primary btn-sm"><i class="nav-icon fas fa-pen"></i> &nbsp; Input Absensi</a></td>
                 </tr>
               @else
               @endif
